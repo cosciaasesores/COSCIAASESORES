@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Award, Zap, Users } from "lucide-react";
+import { ReasonItem } from "./ui/ReasonItem";
 
 export function WhyUs() {
     const reasons = [
@@ -23,7 +24,7 @@ export function WhyUs() {
     ];
 
     return (
-        <section id="nosotros" className="py-24 bg-brand-navy text-white overflow-hidden scroll-mt-20">
+        <section id="nosotros" className="py-section bg-brand-navy text-white overflow-hidden scroll-mt-20">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col lg:flex-row items-center gap-16">
                     <motion.div
@@ -44,15 +45,7 @@ export function WhyUs() {
 
                         <div className="space-y-6">
                             {reasons.map((item, i) => (
-                                <div key={i} className="flex gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors">
-                                    <div className="shrink-0 w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center border border-brand-blue/20">
-                                        <item.icon className="w-6 h-6 text-brand-blue" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-bold text-xl mb-1">{item.title}</h4>
-                                        <p className="text-brand-slate text-sm">{item.desc}</p>
-                                    </div>
-                                </div>
+                                <ReasonItem key={i} {...item} />
                             ))}
                         </div>
                     </motion.div>

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Car, Home, Heart, UserCheck, Briefcase, ChevronRight } from "lucide-react";
+import { Car, Home, Heart, UserCheck, Briefcase } from "lucide-react";
+import { ServiceCard } from "./ui/ServiceCard";
 
 const services = [
     {
@@ -43,7 +43,7 @@ const services = [
 
 export function Services() {
     return (
-        <section id="servicios" className="py-24 bg-white dark:bg-brand-royal/20">
+        <section id="servicios" className="py-section bg-white dark:bg-brand-royal/20">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold mb-6">Nuestras Soluciones</h2>
@@ -55,30 +55,7 @@ export function Services() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group p-8 rounded-2xl bg-white dark:bg-brand-navy border border-brand-blue/5 hover:border-brand-blue/20 transition-all hover:shadow-xl dark:hover:shadow-brand-blue/5 relative overflow-hidden"
-                        >
-                            <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center mb-6 transition-transform group-hover:scale-110`}>
-                                <service.icon className={`w-7 h-7 ${service.textColor}`} />
-                            </div>
-                            <h3 className="text-xl font-bold mb-4 group-hover:text-brand-blue transition-colors">
-                                {service.title}
-                            </h3>
-                            <p className="text-brand-slate mb-6 line-clamp-3">
-                                {service.description}
-                            </p>
-                            <a
-                                href="#contacto"
-                                className="inline-flex items-center gap-2 text-sm font-bold text-brand-blue group-hover:gap-3 transition-all"
-                            >
-                                Solicitar Cotización <ChevronRight className="w-4 h-4" />
-                            </a>
-                        </motion.div>
+                        <ServiceCard key={index} {...service} index={index} />
                     ))}
                 </div>
             </div>

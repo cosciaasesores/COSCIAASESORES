@@ -2,6 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ShieldCheck, ArrowRight } from "lucide-react";
+import { StatItem } from "./ui/StatItem";
+
+const heroStats = [
+    { label: "Años de Experiencia", value: "20+" },
+    { label: "Clientes Asegurados", value: "5000+" },
+    { label: "Empresas Aliadas", value: "15+" },
+];
 
 export function Hero() {
     return (
@@ -70,7 +77,7 @@ export function Hero() {
                 </div>
             </div>
 
-            {/* Hero Stats (Visual only) */}
+            {/* Hero Stats */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -79,15 +86,8 @@ export function Hero() {
             >
                 <div className="container mx-auto px-6">
                     <div className="grid grid-cols-3 gap-8 border-t border-white/5 pt-10">
-                        {[
-                            { label: "Años de Experiencia", value: "20+" },
-                            { label: "Clientes Asegurados", value: "5000+" },
-                            { label: "Empresas Aliadas", value: "15+" },
-                        ].map((stat, i) => (
-                            <div key={i} className="text-center">
-                                <div className="text-2xl font-bold text-white">{stat.value}</div>
-                                <div className="text-sm text-brand-slate uppercase tracking-wider">{stat.label}</div>
-                            </div>
+                        {heroStats.map((stat, i) => (
+                            <StatItem key={i} {...stat} />
                         ))}
                     </div>
                 </div>

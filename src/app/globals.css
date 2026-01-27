@@ -7,9 +7,12 @@
   --color-brand-silver: #CCD6F6;
   --color-brand-slate: #8892B0;
   --color-brand-white: #F8FAFC;
-  
+
   --font-outfit: "Outfit", sans-serif;
   --font-inter: "Inter", sans-serif;
+
+  --spacing-section: 6rem;
+  --spacing-container: 1.5rem;
 }
 
 :root {
@@ -39,7 +42,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-outfit);
   font-weight: 700;
 }
