@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, Award, Zap, Users } from "lucide-react";
+import { CheckCircle2, Award, Zap, Users, ShieldCheck } from "lucide-react";
 import { ReasonItem } from "./ui/ReasonItem";
 
 export function WhyUs() {
@@ -9,65 +9,85 @@ export function WhyUs() {
         {
             icon: Award,
             title: "Asesoramiento Certificado",
-            desc: "Contamos con años de experiencia asesorando a familias y empresas con los más altos estándares.",
+            desc: "Décadas de trayectoria asesorando a familias y empresas con los más altos estándares éticos.",
         },
         {
             icon: Zap,
             title: "Respuesta Inmediata",
-            desc: "Gestión ágil de siniestros y consultas. No sos un número más, sos nuestra prioridad.",
+            desc: "Gestión ágil pro-cliente. Ante un siniestro, somos tu mayor aliado, no sos un número más.",
         },
         {
             icon: Users,
-            title: "Atención Personalizada",
-            desc: "Entendemos tus riesgos y buscamos la mejor relación costo-beneficio del mercado.",
+            title: "Atención Exclusiva",
+            desc: "Personalizamos cada póliza buscando el equilibrio perfecto entre máxima cobertura y costo.",
         },
     ];
 
     return (
-        <section id="nosotros" className="py-section bg-brand-navy text-white overflow-hidden scroll-mt-20">
-            <div className="container mx-auto px-6">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="flex-1"
-                    >
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">
-                            ¿Por qué confiar <br />
-                            <span className="text-brand-blue">en Coscia Seguros?</span>
-                        </h2>
-                        <p className="text-brand-slate text-lg mb-10 max-w-xl">
-                            Nacimos para brindar tranquilidad. Como productores independientes,
-                            trabajamos para vos, seleccionando las mejores propuestas entre
-                            las aseguradoras líderes del país.
-                        </p>
+        <section id="nosotros" className="py-32 bg-brand-navy relative">
+            {/* Ambient Background Glow */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/10 rounded-full blur-[120px]" />
+            </div>
 
-                        <div className="space-y-6">
-                            {reasons.map((item, i) => (
-                                <ReasonItem key={i} {...item} />
-                            ))}
-                        </div>
-                    </motion.div>
+            <div className="container mx-auto px-6 lg:px-12 relative z-10">
+                <div className="flex flex-col lg:flex-row gap-20 items-start">
 
-                    {/* Decorative Visual Element */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        className="flex-1 relative"
-                    >
-                        <div className="relative z-10 bg-linear-to-br from-brand-royal to-brand-navy p-1 rounded-3xl border border-white/10 shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
-                            <div className="text-center p-12">
-                                <CheckCircle2 className="w-20 h-20 text-brand-blue mx-auto mb-6" />
-                                <div className="text-4xl font-bold mb-2">Seguridad 100%</div>
-                                <div className="text-brand-silver">Garantizada por nuestras aseguradoras aliadas</div>
-                            </div>
-                        </div>
-                        {/* Background blobs */}
-                        <div className="absolute -top-10 -right-10 w-64 h-64 bg-brand-blue/20 rounded-full blur-[80px] -z-10" />
-                        <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-brand-royal/40 rounded-full blur-[80px] -z-10" />
-                    </motion.div>
+                    {/* Header */}
+                    <div className="lg:w-1/3 sticky top-32">
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            className="inline-flex items-center gap-2 text-brand-cyan font-bold uppercase tracking-widest text-xs mb-6"
+                        >
+                            <span className="w-8 h-px bg-brand-cyan" />
+                            Por qué elegirnos
+                        </motion.div>
+
+                        <motion.h2
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.1 }}
+                            className="text-5xl md:text-6xl font-display font-bold text-white mb-8 leading-snug pb-1"
+                        >
+                            Respaldo <br /><span className="text-brand-blue">Absoluto.</span>
+                        </motion.h2>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="text-xl text-brand-silver/80 leading-relaxed font-light"
+                        >
+                            En un mercado complejo, la claridad es nuestro mayor activo. Analizamos cada riesgo para ofrecerte soluciones que realmente funcionan cuando las necesitás.
+                        </motion.p>
+                    </div>
+
+                    {/* Grid */}
+                    <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {reasons.map((reason, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 + 0.3 }}
+                                className="group p-8 rounded-3xl card-glass hover:bg-white/5 transition-all duration-300 border-transparent hover:border-brand-blue/20"
+                            >
+                                <div className="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                    <reason.icon className="w-7 h-7 text-brand-blue" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-white mb-4">{reason.title}</h3>
+                                <p className="text-brand-slate group-hover:text-brand-silver transition-colors leading-relaxed">
+                                    {reason.desc}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
+
                 </div>
             </div>
         </section>

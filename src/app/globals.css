@@ -1,58 +1,109 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-navy: #0A192F;
-  --color-brand-royal: #112240;
-  --color-brand-blue: #2563EB;
-  --color-brand-silver: #CCD6F6;
-  --color-brand-slate: #8892B0;
-  --color-brand-white: #F8FAFC;
+  --color-brand-navy: #0f172a;
+  /* Main Background */
+  --color-brand-royal: #1e293b;
+  /* Secondary Dark */
+  --color-brand-blue: #3b82f6;
+  /* Electric Blue Accent */
+  --color-brand-cyan: #06b6d4;
+  /* Radiant Cyan Accent */
 
-  --font-outfit: "Outfit", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  --color-brand-silver: #e2e8f0;
+  /* Light Text */
+  --color-brand-slate: #94a3b8;
+  /* Muted Text */
+  --color-brand-white: #ffffff;
 
-  --spacing-section: 6rem;
-  --spacing-container: 1.5rem;
+  --font-display: "Syne", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --spacing-section: 8rem;
+  --spacing-container: 2rem;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0A192F;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0A192F;
-    --foreground: #F8FAFC;
-  }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  --background: #0f172a;
+  /* Deep Navy System */
+  --foreground: #ffffff;
 }
 
 body {
-  background-color: var(--background);
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-outfit);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-sans);
   overflow-x: hidden;
 }
 
+/* Typography Overrides */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-outfit);
-  font-weight: 700;
+  font-family: var(--font-display);
 }
 
-p {
-  font-family: var(--font-inter);
-  line-height: 1.6;
+/* Fix for font-display descender clipping */
+.font-display {
+  line-height: 1.4 !important;
+  padding-bottom: 0.1em;
+}
+
+/* Animations */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Utilities - Glass on Dark */
+.glass-nav {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-light {
+  background: linear-gradient(135deg, #ffffff 0%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-hero-premium {
+  background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.4)), url('/bg-hero-premium.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }

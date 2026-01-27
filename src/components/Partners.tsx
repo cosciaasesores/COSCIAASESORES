@@ -8,18 +8,27 @@ const partners = [
 
 export function Partners() {
     return (
-        <section id="socios" className="py-20 bg-white border-y border-gray-100">
-            <div className="container mx-auto px-6">
-                <div className="text-center mb-12">
-                    <p className="text-xs uppercase tracking-[0.2em] font-bold text-brand-slate mb-4">Trabajamos con las mejores</p>
-                    <h2 className="text-2xl font-bold">Compañías Líderes</h2>
+        <section id="socios" className="py-32 bg-brand-navy border-y border-white/5 relative overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-brand-blue/5 pointer-events-none" />
+
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="text-center mb-20">
+                    <p className="text-xs uppercase tracking-[0.2em] font-bold text-brand-cyan mb-4">Trabajamos con las mejores</p>
+                    <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Compañías Líderes</h2>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale group hover:grayscale-0 transition-all duration-700">
+                <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-all duration-700">
                     {partners.map((partner, i) => (
-                        <span key={i} className="text-xl md:text-2xl font-black tracking-tighter hover:text-brand-blue cursor-default">
+                        <motion.span
+                            key={i}
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            transition={{ delay: i * 0.1 }}
+                            className="text-xl md:text-3xl font-display font-bold tracking-tighter text-white hover:text-brand-blue cursor-default transition-colors"
+                        >
                             {partner}
-                        </span>
+                        </motion.span>
                     ))}
                 </div>
             </div>

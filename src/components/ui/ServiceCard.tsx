@@ -11,6 +11,7 @@ interface ServiceCardProps {
     color: string;
     textColor: string;
     index: number;
+    value?: string; // Add value prop for form mapping
 }
 
 export function ServiceCard({
@@ -21,32 +22,63 @@ export function ServiceCard({
     textColor,
     index,
 }: ServiceCardProps) {
+    // Map title to form value if not provided
+    const getServiceValue = () => {
+        if (title.includes("Automotor")) return "auto";
+        if (title.includes("Hogar")) return "hogar";
+        if (title.includes("Vida")) return "vida";
+        if (title.includes("Accidentes")) return "accidentes";
+        if (title.includes("Empresas")) return "empresas";
+        return "otro";
+    };
+
+    const handleConsultClick = () => {
+        const value = getServiceValue();
+        // Dispatch custom event for immediate form update if on same page
+        window.dispatchEvent(new CustomEvent('selectService', { detail: value }));
+
+        const contactSection = document.getElementById('contacto');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className="group p-8 rounded-2xl bg-white dark:bg-brand-navy border border-brand-blue/5 hover:border-brand-blue/20 transition-all hover:shadow-xl dark:hover:shadow-brand-blue/5 relative overflow-hidden"
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            className="group relative p-8 h-full card-glass rounded-4xl hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between hover:bg-white/5"
         >
-            <div className={cn(
-                "w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110",
-                color
-            )}>
-                <Icon className={cn("w-7 h-7", textColor)} />
+            <div className="mb-6 relative z-10">
+                <div className={cn(
+                    "w-16 h-16 flex items-center justify-center mb-6 rounded-2xl bg-white/5 shadow-sm border border-white/10 backdrop-blur-md transition-colors group-hover:bg-brand-blue group-hover:border-transparent",
+                )}>
+                    <Icon className="w-8 h-8 text-white group-hover:text-white" />
+                </div>
+
+                <h3 className="text-2xl font-bold mb-4 text-white leading-relaxed">
+                    {title}
+                </h3>
+
+                <p className="text-brand-slate leading-relaxed font-normal group-hover:text-brand-silver transition-colors">
+                    {description}
+                </p>
             </div>
-            <h3 className="text-xl font-bold mb-4 group-hover:text-brand-blue transition-colors">
-                {title}
-            </h3>
-            <p className="text-brand-slate mb-6 line-clamp-3">
-                {description}
-            </p>
-            <a
-                href="#contacto"
-                className="inline-flex items-center gap-2 text-sm font-bold text-brand-blue group-hover:gap-3 transition-all"
+
+            <div
+                onClick={handleConsultClick}
+                className="relative z-10 mt-6 pt-6 border-t border-white/10 flex items-center justify-between group/link cursor-pointer"
             >
-                Solicitar Cotización <ChevronRight className="w-4 h-4" />
-            </a>
+                <span className="text-sm font-bold uppercase tracking-widest gradient-text-light group-hover:translate-x-1 transition-transform">
+                    Consultar
+                </span>
+                <ChevronRight className="w-5 h-5 text-brand-cyan group-hover/link:translate-x-1 transition-transform" />
+            </div>
+
+            {/* Hover Glow */}
+            <div className="absolute inset-0 bg-linear-to-br from-brand-cyan/5 to-brand-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-4xl pointer-events-none" />
         </motion.div>
     );
 }

@@ -2,6 +2,7 @@
 
 import { Car, Home, Heart, UserCheck, Briefcase } from "lucide-react";
 import { ServiceCard } from "./ui/ServiceCard";
+import { ResilientContainer } from "./ui/ResilientContainer";
 
 const services = [
     {
@@ -53,11 +54,17 @@ export function Services() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {services.map((service, index) => (
-                        <ServiceCard key={index} {...service} index={index} />
-                    ))}
-                </div>
+                <ResilientContainer
+                    isLoading={false}
+                    isEmpty={services.length === 0}
+                    emptyMessage="No hay servicios disponibles en este momento."
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {services.map((service, index) => (
+                            <ServiceCard key={index} {...service} index={index} />
+                        ))}
+                    </div>
+                </ResilientContainer>
             </div>
         </section>
     );

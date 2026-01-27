@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import "@fontsource/outfit/400.css";
-import "@fontsource/outfit/700.css";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/600.css";
+import "@fontsource/outfit";
+import "@fontsource/inter";
+import "@fontsource/syne";
 import "./globals.css";
+import { Navbar } from "@/components/Navbar";
+
 
 export const metadata: Metadata = {
-  title: "Coscia Seguros | Protección y Confianza",
-  description: "Productores de Seguros dedicados a proteger lo que más valoras. Automotores, Hogar, Vida y ART.",
+  title: "Coscia Asesores | Protección Inteligente",
+  description: "Asesoramiento experto en seguros patrimoniales y de vida.",
 };
 
 export default function RootLayout({
@@ -16,9 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className="antialiased font-outfit">
-        {children}
+    <html lang="es" className="scroll-smooth">
+      <body className="font-sans antialiased text-brand-navy bg-brand-silver">
+        <Navbar />
+        <main>{children}</main>
       </body>
     </html>
   );
