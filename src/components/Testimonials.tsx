@@ -61,7 +61,7 @@ export function Testimonials() {
                                 ))}
                             </div>
 
-                            <p className="text-brand-silver mb-8 leading-relaxed italic">
+                            <p className="text-brand-silver/90 mb-8 leading-relaxed italic font-normal">
                                 "{t.content}"
                             </p>
 
@@ -73,6 +73,6 @@ export function Testimonials() {
                     ))}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

@@ -61,7 +61,7 @@ export function WhyUs() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="text-xl text-brand-silver/80 leading-relaxed font-light"
+                            className="text-xl text-brand-silver/90 leading-relaxed font-normal"
                         >
                             En un mercado complejo, la claridad es nuestro mayor activo. Analizamos cada riesgo para ofrecerte soluciones que realmente funcionan cuando las necesitás.
                         </motion.p>

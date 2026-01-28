@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 /* eslint-disable @next/next/no-img-element */
 
@@ -41,14 +42,16 @@ export function Navbar() {
             )}>
                 <div className="flex items-center gap-3 group cursor-pointer">
                     <div className={cn(
-                        "transition-all flex items-center justify-center",
+                        "relative transition-all flex items-center justify-center",
                         "rounded-full bg-white/10 overflow-hidden",
                         isScrolled ? "w-10 h-10" : "w-14 h-14"
                     )}>
-                        <img
+                        <Image
                             src="/logoCoscia.png"
                             alt="Coscia Asesores Logo"
-                            className="w-full h-full object-cover"
+                            fill
+                            className="object-cover"
+                            priority
                         />
                     </div>
                     <span className={cn(
@@ -76,8 +79,10 @@ export function Navbar() {
                     <a
                         href="#contacto"
                         className={cn(
-                            "bg-brand-blue hover:bg-brand-cyan text-white rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20",
-                            isScrolled ? "px-6 py-2 text-xs" : "px-8 py-3 text-sm"
+                            "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20 flex items-center justify-center",
+                            isScrolled
+                                ? "bg-brand-cyan text-brand-navy px-6 py-2 text-xs"
+                                : "bg-brand-blue text-white px-8 py-3 text-sm hover:bg-white hover:text-brand-blue"
                         )}
                     >
                         Cotizar

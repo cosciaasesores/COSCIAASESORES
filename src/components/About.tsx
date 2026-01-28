@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function About() {
     return (
@@ -63,7 +64,12 @@ export function About() {
                     <div className="lg:w-1/2 relative">
                         {/* Abstract Visual Representation instead of generic stock photo */}
                         <div className="aspect-square rounded-3xl overflow-hidden bg-linear-to-br from-brand-blue/20 to-brand-navy border border-white/10 relative">
-                            <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-40 mix-blend-overlay hover:scale-105 transition-transform duration-700" />
+                            <Image
+                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                                alt="Visión 360"
+                                fill
+                                className="object-cover opacity-40 mix-blend-overlay hover:scale-105 transition-transform duration-700"
+                            />
 
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="p-8 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl max-w-xs text-center">

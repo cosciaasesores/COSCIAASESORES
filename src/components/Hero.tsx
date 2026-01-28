@@ -39,7 +39,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-brand-silver/80 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
+                    className="text-xl md:text-2xl text-brand-silver/90 mb-12 max-w-2xl mx-auto leading-relaxed font-normal"
                 >
                     Asesoramiento estratégico para proteger lo que construiste.
                     <br className="hidden md:block" />
@@ -52,7 +52,7 @@ export function Hero() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-6"
                 >
-                    <a href="#contacto" className="px-12 py-6 bg-brand-blue hover:bg-white hover:text-brand-blue text-white rounded-full font-bold text-lg shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all hover:scale-105 flex items-center gap-3">
+                    <a href="#contacto" className="px-12 py-6 bg-brand-cyan text-brand-navy hover:bg-white transition-all rounded-full font-bold text-lg shadow-[0_0_50px_-10px_rgba(34,211,238,0.4)] hover:scale-105 flex items-center gap-3">
                         Hablar con un Asesor
                         <ArrowRight className="w-5 h-5" />
                     </a>
@@ -63,10 +63,6 @@ export function Hero() {
 
             </div>
 
-            {/* Marquee at the bottom */}
-            <div className="relative z-10 mt-auto pb-0">
-                <PartnersMarquee />
-            </div>
 
         </section>
     );

@@ -97,7 +97,7 @@ export function ContactForm() {
                         name="name"
                         required
                         placeholder="Tu nombre"
-                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all placeholder:text-brand-slate/30 text-white"
+                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all placeholder:text-brand-slate/50 text-white"
                     />
                 </div>
                 <div className="space-y-2">
@@ -110,7 +110,7 @@ export function ContactForm() {
                         name="email"
                         required
                         placeholder="tu@email.com"
-                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all placeholder:text-brand-slate/30 text-white"
+                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all placeholder:text-brand-slate/50 text-white"
                     />
                 </div>
             </div>

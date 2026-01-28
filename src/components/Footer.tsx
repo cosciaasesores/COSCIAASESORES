@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Shield } from "lucide-react";
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 
 export function Footer() {
     return (
@@ -16,16 +16,17 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-3 mb-6 text-2xl font-display font-bold text-white tracking-wide">
-                            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
-                                <img
+                            <div className="relative w-10 h-10 rounded-full bg-white/10 flex items-center justify-center overflow-hidden">
+                                <Image
                                     src="/logo-coscia.png"
                                     alt="Coscia Asesores Logo"
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
                                 />
                             </div>
                             Coscia Asesores
                         </div>
-                        <p className="text-brand-slate text-lg leading-relaxed max-w-sm font-light">
+                        <p className="text-brand-slate text-lg leading-relaxed max-w-sm font-normal">
                             Protección inteligente para un futuro seguro.
                             Expertos en análisis de riesgos y soluciones patrimoniales.
                         </p>
@@ -35,10 +36,10 @@ export function Footer() {
                     <div>
                         <h4 className="font-display font-bold text-xl mb-6 text-white">Servicios</h4>
                         <ul className="space-y-4">
-                            <li><a href="#" className="text-brand-silver hover:text-brand-blue transition-colors">Seguros Patrimoniales</a></li>
-                            <li><a href="#" className="text-brand-silver hover:text-brand-blue transition-colors">Vida y Retiro</a></li>
-                            <li><a href="#" className="text-brand-silver hover:text-brand-blue transition-colors">ART Empresas</a></li>
-                            <li><a href="#" className="text-brand-silver hover:text-brand-blue transition-colors">Caución</a></li>
+                            <li><a href="#servicios" className="text-brand-silver hover:text-brand-blue transition-colors">Seguros Patrimoniales</a></li>
+                            <li><a href="#servicios" className="text-brand-silver hover:text-brand-blue transition-colors">Vida y Retiro</a></li>
+                            <li><a href="#socios" className="text-brand-silver hover:text-brand-blue transition-colors">ART Empresas</a></li>
+                            <li><a href="#contacto" className="text-brand-silver hover:text-brand-blue transition-colors">Caución</a></li>
                         </ul>
                     </div>
 
@@ -47,7 +48,7 @@ export function Footer() {
                         <h4 className="font-display font-bold text-xl mb-6 text-white">Contacto</h4>
                         <ul className="space-y-4">
                             <li className="text-brand-silver">Año 1852 Nº 8, El Palomar</li>
-                            <li className="text-brand-silver">Buenos Aires, Argentina</li>
+                            <li className="text-brand-silver font-normal">Buenos Aires, Argentina</li>
                             <li><a href="mailto:cosciaasesores@gmail.com" className="text-white hover:text-brand-blue font-bold transition-colors">cosciaasesores@gmail.com</a></li>
                         </ul>
                     </div>
