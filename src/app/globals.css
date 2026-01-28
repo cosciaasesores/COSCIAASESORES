@@ -16,7 +16,7 @@
   /* Muted Text */
   --color-brand-white: #ffffff;
 
-  --font-display: "Syne", sans-serif;
+  --font-display: "Outfit", sans-serif;
   --font-sans: "Inter", sans-serif;
 
   --spacing-section: 8rem;
@@ -44,12 +44,6 @@ h4,
 h5,
 h6 {
   font-family: var(--font-display);
-}
-
-/* Fix for font-display descender clipping */
-.font-display {
-  line-height: 1.4 !important;
-  padding-bottom: 0.1em;
 }
 
 /* Animations */

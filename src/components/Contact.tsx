@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 export function Contact() {
     return (
         <section id="contacto" className="py-32 bg-brand-navy relative">
-            {/* Background Mesh */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Background Mesh - HIDDEN ON MOBILE FOR PERFORMANCE */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-[100px]" />
             </div>
 
@@ -100,17 +100,44 @@ export function Contact() {
             </div>
 
             {/* WhatsApp Floating Button Premium */}
-            <a
+            <motion.a
                 href="https://wa.me/5491158276780"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-10 right-10 w-20 h-20 bg-[#25D366] text-white rounded-4xl flex items-center justify-center shadow-[0_20px_50px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 transition-all z-50 group border border-white/20"
+                animate={{
+                    boxShadow: [
+                        "0 0 0 0 rgba(59, 130, 246, 0.4)",
+                        "0 0 0 20px rgba(59, 130, 246, 0)",
+                    ],
+                    scale: [1, 1.05, 1],
+                }}
+                transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                }}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="fixed bottom-10 right-10 w-20 h-20 bg-linear-to-br from-brand-blue to-brand-cyan text-white rounded-full flex items-center justify-center shadow-[0_20px_50px_rgba(59,130,246,0.5)] z-50 group border border-white/20 overflow-hidden"
             >
-                <MessageCircle className="w-10 h-10" />
+                {/* Shimmer Effect */}
+                <motion.div
+                    className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent skew-x-12"
+                    initial={{ x: "-150%" }}
+                    animate={{ x: "150%" }}
+                    transition={{
+                        duration: 1.5,
+                        repeat: Infinity,
+                        repeatDelay: 3,
+                        ease: "easeInOut",
+                    }}
+                />
+
+                <MessageCircle className="w-9 h-9 relative z-10" />
                 <span className="absolute right-[calc(100%+20px)] glass bg-brand-navy/90 text-white px-6 py-3 rounded-2xl text-sm font-bold uppercase tracking-widest shadow-2xl opacity-0 group-hover:opacity-100 transition-all pointer-events-none whitespace-nowrap -translate-x-4 group-hover:translate-x-0 border border-white/10">
                     Chatear ahora
                 </span>
-            </a>
+            </motion.a>
         </section>
     );
 }

@@ -7,8 +7,8 @@ import { PartnersMarquee } from "@/components/ui/PartnersMarquee";
 export function Hero() {
     return (
         <section id="inicio" className="relative min-h-screen flex flex-col justify-center bg-hero-premium pt-20">
-            {/* Background Gradients (Crearte Style - Subtle but Deep) */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Background Gradients (Crearte Style - Subtle but Deep) - HIDDEN ON MOBILE FOR PERFORMANCE */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-blue/20 rounded-full blur-[100px] opacity-40 mix-blend-screen" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[100px] opacity-30 mix-blend-screen" />
             </div>

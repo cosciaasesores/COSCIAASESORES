@@ -26,15 +26,16 @@ export function WhyUs() {
     return (
         <section id="nosotros" className="py-32 bg-brand-navy relative">
             {/* Ambient Background Glow */}
-            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            {/* Ambient Background Glow - HIDDEN ON MOBILE */}
+            <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-blue/10 rounded-full blur-[120px]" />
             </div>
 
             <div className="container mx-auto px-6 lg:px-12 relative z-10">
                 <div className="flex flex-col lg:flex-row gap-20 items-start">
 
-                    {/* Header */}
-                    <div className="lg:w-1/3 sticky top-32">
+                    {/* Header - STATIC ON MOBILE, STICKY ON DESKTOP */}
+                    <div className="lg:w-1/3 relative lg:sticky lg:top-32">
                         <motion.div
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
