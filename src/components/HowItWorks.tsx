@@ -50,13 +50,15 @@ export function HowItWorks() {
                             transition={{ delay: index * 0.2 }}
                             className="relative z-10 flex flex-col items-center text-center group"
                         >
-                            <div className="w-24 h-24 rounded-3xl bg-brand-royal border border-white/10 flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300 relative overflow-hidden">
-                                {/* Icon Glow */}
-                                <div className="absolute inset-0 bg-brand-blue/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                                <step.icon className="w-10 h-10 text-brand-cyan relative z-10" />
+                            <div className="relative mb-8 group-hover:scale-110 transition-transform duration-300">
+                                <div className="w-24 h-24 rounded-3xl bg-brand-royal border border-white/10 flex items-center justify-center shadow-lg relative overflow-hidden">
+                                    {/* Icon Glow */}
+                                    <div className="absolute inset-0 bg-brand-blue/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <step.icon className="w-10 h-10 text-brand-cyan relative z-10" />
+                                </div>
 
                                 {/* Step Number Badge */}
-                                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-sm ring-4 ring-brand-navy">
+                                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-sm ring-4 ring-brand-navy z-20">
                                     {index + 1}
                                 </div>
                             </div>

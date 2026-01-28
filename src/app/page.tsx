@@ -3,6 +3,8 @@ import { Hero } from "@/components/Hero";
 import { Services } from "@/components/Services";
 import { WhyUs } from "@/components/WhyUs";
 import { Partners } from "@/components/Partners";
+import { About } from "@/components/About";
+import { Team } from "@/components/Team";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
@@ -13,12 +15,14 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <Partners />
       <Services />
       <WhyUs />
       <HowItWorks />
       <Testimonials />
+      <About />
+      <Team />
       <FAQ />
-      <Partners />
       <Contact />
 
       {/* Footer */}
