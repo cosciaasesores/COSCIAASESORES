@@ -19,10 +19,10 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md text-sm font-bold text-brand-cyan mb-8 self-center mx-auto"
+                    className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-linear-to-r from-brand-cyan/20 to-brand-blue/20 border border-brand-cyan/30 backdrop-blur-md text-sm font-bold text-brand-cyan mb-8 self-center mx-auto"
                 >
-                    <Star className="w-4 h-4 fill-current" />
-                    <span className="tracking-widest uppercase text-xs font-sans">Premium Insurance</span>
+                    <Star className="w-4 h-4 fill-current animate-pulse" />
+                    <span className="tracking-widest uppercase text-xs font-sans">🔥 Cotización Express Sin Costo</span>
                 </motion.div>
 
                 <motion.h1
@@ -53,7 +53,7 @@ export function Hero() {
                     className="flex flex-col sm:flex-row items-center justify-center gap-6"
                 >
                     <a href="#contacto" className="px-12 py-6 bg-brand-cyan text-brand-navy hover:bg-white transition-all rounded-full font-bold text-lg shadow-[0_0_50px_-10px_rgba(34,211,238,0.4)] hover:scale-105 flex items-center gap-3">
-                        Hablar con un Asesor
+                        Cotización Gratis en 2 Min
                         <ArrowRight className="w-5 h-5" />
                     </a>
                     <a href="#servicios" className="px-12 py-6 bg-transparent hover:bg-white/5 text-white border border-white/20 rounded-full font-bold text-lg transition-all hover:scale-105 backdrop-blur-sm">
@@ -64,6 +64,6 @@ export function Hero() {
             </div>
 
 
-        </section>
+        </section >
     );
 }

@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import "@fontsource/outfit";
 import "@fontsource/inter";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
+import { StructuredData } from "@/components/StructuredData";
+import { ClientLayout } from "@/components/ClientLayout";
 
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://cosciaseguros.vercel.app'),
-  title: "Coscia Asesores | Protección Inteligente",
-  description: "Asesoramiento experto en seguros patrimoniales y de vida. Protegemos tu futuro con las mejores compañías del mercado.",
-  keywords: ["seguros", "asesor de seguros", "seguro automotor", "seguro de vida", "ART", "Buenos Aires", "El Palomar"],
+  title: "Coscia Asesores | Seguros en El Palomar y CABA - Cotización Gratis",
+  description: "✅ Asesoría en Seguros en El Palomar y CABA ⚡ Cotizá gratis tu seguro de auto, hogar, vida y ART. Trabajamos con +20 aseguradoras líderes. ¡Atención personalizada 24/7!",
+  keywords: ["seguros el palomar", "asesor de seguros", "seguro automotor", "seguro de vida", "ART", "seguros Buenos Aires", "cotización gratis", "broker seguros"],
   authors: [{ name: "Coscia Asesores" }],
   creator: "Coscia Asesores",
   publisher: "Coscia Asesores",
@@ -24,8 +25,8 @@ export const metadata: Metadata = {
     apple: "/logo-coscia.png",
   },
   openGraph: {
-    title: "Coscia Asesores | Protección Inteligente",
-    description: "Asesoramiento experto en seguros patrimoniales y de vida.",
+    title: "Coscia Asesores | Seguros en El Palomar - Cotización Gratis",
+    description: "Cotizá gratis tu seguro de auto, hogar, vida y ART. +20 aseguradoras líderes. Atención personalizada 24/7 en El Palomar y CABA.",
     url: "https://cosciaseguros.vercel.app",
     siteName: "Coscia Asesores",
     images: [
@@ -51,9 +52,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
+      <head>
+        <StructuredData />
+      </head>
       <body className="font-sans antialiased text-brand-navy bg-brand-silver">
-        <Navbar />
-        <main>{children}</main>
+        <ClientLayout>
+          <main>{children}</main>
+        </ClientLayout>
       </body>
     </html>
   );

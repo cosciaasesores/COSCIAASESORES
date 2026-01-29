@@ -8,11 +8,27 @@ export function ContactForm() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [selectedService, setSelectedService] = useState("");
 
+    // Form values
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    // Form errors
+    const [errors, setErrors] = useState({
+        name: false,
+        email: false,
+        service: false,
+        message: false
+    });
+
     // Listen for custom service selection events
     useEffect(() => {
         const handleServiceSelect = (e: CustomEvent) => {
             if (e.detail) {
                 setSelectedService(e.detail);
+                setErrors(prev => ({ ...prev, service: false }));
             }
         };
 
@@ -20,8 +36,29 @@ export function ContactForm() {
         return () => window.removeEventListener('selectService', handleServiceSelect as EventListener);
     }, []);
 
+    const validateForm = () => {
+        const newErrors = {
+            name: formData.name.trim() === "",
+            email: formData.email.trim() === "" || !isValidEmail(formData.email),
+            service: selectedService === "",
+            message: formData.message.trim() === ""
+        };
+
+        setErrors(newErrors);
+        return !Object.values(newErrors).some(error => error);
+    };
+
+    const isValidEmail = (email: string) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
+
         setStatus("loading");
 
         // Simulate API call
@@ -29,9 +66,18 @@ export function ContactForm() {
             // For demo purposes, we'll set it to success
             setStatus("success");
 
+            // Reset form
+            setFormData({ name: "", email: "", message: "" });
+            setSelectedService("");
+
             // Reset after 5 seconds
             setTimeout(() => setStatus("idle"), 5000);
         }, 1500);
+    };
+
+    const handleInputChange = (field: keyof typeof formData, value: string) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+        setErrors(prev => ({ ...prev, [field]: false }));
     };
 
     if (status === "success") {
@@ -95,10 +141,20 @@ export function ContactForm() {
                         type="text"
                         id="name"
                         name="name"
-                        required
+                        value={formData.name}
+                        onChange={(e) => handleInputChange('name', e.target.value)}
                         placeholder="Tu nombre"
-                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all placeholder:text-brand-slate/50 text-white"
+                        className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all placeholder:text-brand-slate/50 text-white ${errors.name
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                            }`}
                     />
+                    {errors.name && (
+                        <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="w-4 h-4" />
+                            Este campo es obligatorio
+                        </p>
+                    )}
                 </div>
                 <div className="space-y-2">
                     <label htmlFor="email" className="block text-xs font-bold uppercase tracking-widest text-brand-silver pl-1">
@@ -108,10 +164,20 @@ export function ContactForm() {
                         type="email"
                         id="email"
                         name="email"
-                        required
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
                         placeholder="tu@email.com"
-                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all placeholder:text-brand-slate/50 text-white"
+                        className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all placeholder:text-brand-slate/50 text-white ${errors.email
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                            }`}
                     />
+                    {errors.email && (
+                        <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="w-4 h-4" />
+                            {formData.email.trim() === '' ? 'Este campo es obligatorio' : 'Ingresá un email válido'}
+                        </p>
+                    )}
                 </div>
             </div>
 
@@ -123,10 +189,15 @@ export function ContactForm() {
                     <select
                         id="service"
                         name="service"
-                        required
                         value={selectedService}
-                        onChange={(e) => setSelectedService(e.target.value)}
-                        className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all appearance-none cursor-pointer text-white [&>option]:bg-brand-navy"
+                        onChange={(e) => {
+                            setSelectedService(e.target.value);
+                            setErrors(prev => ({ ...prev, service: false }));
+                        }}
+                        className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all appearance-none cursor-pointer text-white [&>option]:bg-brand-navy ${errors.service
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                            }`}
                     >
                         <option value="">Seleccionar opción</option>
                         <option value="auto">Seguro Automotor</option>
@@ -138,6 +209,12 @@ export function ContactForm() {
                     </select>
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-slate pointer-events-none" />
                 </div>
+                {errors.service && (
+                    <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-4 h-4" />
+                        Seleccioná un servicio
+                    </p>
+                )}
             </div>
 
             <div className="space-y-2 mb-10">
@@ -148,10 +225,20 @@ export function ContactForm() {
                     id="message"
                     name="message"
                     rows={5}
-                    required
+                    value={formData.message}
+                    onChange={(e) => handleInputChange('message', e.target.value)}
                     placeholder="¿En qué podemos ayudarte?"
-                    className="w-full px-4 py-4 bg-white/5 border border-white/10 rounded-xl focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan outline-none transition-all resize-none placeholder:text-brand-slate/30 text-white"
+                    className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all resize-none placeholder:text-brand-slate/30 text-white ${errors.message
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                        }`}
                 ></textarea>
+                {errors.message && (
+                    <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="w-4 h-4" />
+                        Este campo es obligatorio
+                    </p>
+                )}
             </div>
 
             {status === "error" && (

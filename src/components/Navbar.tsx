@@ -77,6 +77,17 @@ export function Navbar() {
                         ))}
                     </div>
                     <a
+                        href="/siniestros"
+                        className={cn(
+                            "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center",
+                            isScrolled
+                                ? "bg-red-600 hover:bg-red-700 text-white px-5 py-2 text-xs shadow-red-600/20"
+                                : "bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 text-xs shadow-red-600/30"
+                        )}
+                    >
+                        Siniestro
+                    </a>
+                    <a
                         href="#contacto"
                         className={cn(
                             "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20 flex items-center justify-center",
@@ -85,7 +96,7 @@ export function Navbar() {
                                 : "bg-brand-blue text-white px-8 py-3 text-sm hover:bg-white hover:text-brand-blue"
                         )}
                     >
-                        Cotizar
+                        {isScrolled ? "Cotizar Gratis" : "Cotización Gratis en 2 Min"}
                     </a>
                 </div>
 
@@ -119,11 +130,18 @@ export function Navbar() {
                                 </a>
                             ))}
                             <a
+                                href="/siniestros"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="bg-red-600 hover:bg-red-700 text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest mt-4 shadow-xl block transition-colors"
+                            >
+                                Reportar Siniestro
+                            </a>
+                            <a
                                 href="#contacto"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="bg-brand-blue text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest mt-4 shadow-xl block"
+                                className="bg-brand-blue text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl block"
                             >
-                                Cotizar Ahora
+                                Cotización Gratis
                             </a>
                         </div>
                     </motion.div>

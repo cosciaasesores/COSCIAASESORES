@@ -93,6 +93,22 @@ export function Contact() {
                         transition={{ duration: 0.8 }}
                         className="lg:w-3/5 w-full bg-white/5 backdrop-blur-md p-12 lg:p-16 rounded-3xl border border-white/10"
                     >
+                        {/* WhatsApp Quick Quote Option */}
+                        <div className="mb-10 pb-10 border-b border-white/10">
+                            <h3 className="text-white font-bold text-lg mb-3">¿Preferís cotizar por WhatsApp?</h3>
+                            <p className="text-brand-silver/70 text-sm mb-6">Respuesta inmediata de un asesor</p>
+                            <a
+                                href="https://wa.me/5491158276780?text=Hola!%20Quisiera%20cotizar%20un%20seguro"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-full font-bold transition-all hover:scale-105 shadow-lg"
+                            >
+                                <MessageCircle className="w-5 h-5" />
+                                Cotizar por WhatsApp
+                            </a>
+                        </div>
+
+                        <h3 className="text-white font-bold text-lg mb-6">O completá el formulario</h3>
                         <ContactForm />
                     </motion.div>
 
