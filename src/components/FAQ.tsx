@@ -27,7 +27,7 @@ export function FAQ() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="py-24 bg-brand-royal/30 relative">
+        <section id="faq" className="py-24 bg-brand-royal/30 relative">
             {/* Desktop Glow - HIDDEN ON MOBILE */}
             <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-brand-blue/5 rounded-full blur-[100px] hidden md:block" />
 

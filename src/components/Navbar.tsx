@@ -11,7 +11,9 @@ const navLinks = [
     { name: "Inicio", href: "#inicio" },
     { name: "Servicios", href: "#servicios" },
     { name: "Nosotros", href: "#nosotros" },
+    { name: "Proceso", href: "#proceso" },
     { name: "Socios", href: "#socios" },
+    { name: "FAQ", href: "#faq" },
     { name: "Contacto", href: "#contacto" },
 ];
 
@@ -32,7 +34,7 @@ export function Navbar() {
             className={cn(
                 "fixed z-50 transition-all duration-500 ease-out",
                 isScrolled
-                    ? "top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[80%] lg:w-[60%] rounded-full glass-nav py-3 px-8 border border-white/10 shadow-2xl"
+                    ? "top-6 left-1/2 -translate-x-1/2 w-[98%] md:w-[90%] lg:w-[85%] xl:w-[75%] rounded-full glass-nav py-3 px-8 border border-white/10 shadow-2xl"
                     : "top-0 left-0 right-0 w-full bg-transparent py-8 px-6"
             )}
         >
@@ -44,7 +46,7 @@ export function Navbar() {
                     <div className={cn(
                         "relative transition-all flex items-center justify-center",
                         "rounded-full bg-white/10 overflow-hidden",
-                        isScrolled ? "w-10 h-10" : "w-14 h-14"
+                        isScrolled ? "w-8 h-8" : "w-14 h-14"
                     )}>
                         <Image
                             src="/logoCoscia.png"
@@ -56,15 +58,15 @@ export function Navbar() {
                     </div>
                     <span className={cn(
                         "font-black tracking-tighter text-white uppercase flex flex-col leading-none transition-all",
-                        isScrolled ? "text-lg" : "text-2xl"
+                        isScrolled ? "text-base" : "text-2xl"
                     )}>
-                        Coscia <span className="text-brand-cyan text-[10px] tracking-[0.3em] font-medium mt-0.5">Asesores</span>
+                        Coscia <span className="text-brand-cyan text-[8px] tracking-[0.3em] font-medium mt-0.5">Asesores</span>
                     </span>
                 </div>
 
                 {/* Desktop Links */}
-                <div className="hidden lg:flex items-center gap-8">
-                    <div className="flex items-center gap-6">
+                <div className={cn("hidden lg:flex items-center", isScrolled ? "gap-4" : "gap-8")}>
+                    <div className={cn("flex items-center", isScrolled ? "gap-4 xl:gap-6" : "gap-6")}>
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
@@ -100,13 +102,21 @@ export function Navbar() {
                     </a>
                 </div>
 
-                {/* Mobile Toggle */}
-                <button
-                    className="lg:hidden text-white w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10"
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                >
-                    {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
+                {/* Mobile Actions */}
+                <div className="flex lg:hidden items-center gap-3">
+                    <a
+                        href="/siniestros"
+                        className="bg-red-600 text-white px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-red-600/20 active:scale-95 transition-transform"
+                    >
+                        Siniestro
+                    </a>
+                    <button
+                        className="text-white w-10 h-10 flex items-center justify-center rounded-xl bg-white/5 border border-white/10"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu */}
@@ -116,7 +126,7 @@ export function Navbar() {
                         initial={{ opacity: 0, scale: 0.95, y: -20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                        className="lg:hidden absolute top-[calc(100%+16px)] left-0 right-0 bg-brand-navy/95 backdrop-blur-3xl p-6 border border-white/10 rounded-3xl shadow-2xl mx-auto w-full max-w-sm"
+                        className="lg:hidden absolute top-[calc(100%+16px)] left-0 right-0 bg-brand-navy/95 backdrop-blur-3xl p-6 border border-white/10 rounded-3xl shadow-2xl mx-auto w-full max-w-sm max-h-[85vh] overflow-y-auto"
                     >
                         <div className="flex flex-col gap-6 text-center">
                             {navLinks.map((link) => (

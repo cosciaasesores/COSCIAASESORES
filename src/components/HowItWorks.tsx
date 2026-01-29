@@ -23,7 +23,7 @@ export function HowItWorks() {
     ];
 
     return (
-        <section className="py-24 bg-brand-navy border-t border-white/5 relative overflow-hidden">
+        <section id="proceso" className="py-24 bg-brand-navy border-t border-white/5 relative overflow-hidden">
             {/* Desktop Glow - HIDDEN ON MOBILE */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-brand-blue/5 blur-[120px] rounded-full pointer-events-none hidden md:block" />
 
