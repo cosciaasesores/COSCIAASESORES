@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { LucideIcon, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ServiceCardProps {
     title: string;
@@ -11,7 +12,8 @@ interface ServiceCardProps {
     color: string;
     textColor: string;
     index: number;
-    value?: string; // Add value prop for form mapping
+    image?: string;
+    value?: string;
 }
 
 export function ServiceCard({
@@ -21,14 +23,19 @@ export function ServiceCard({
     color,
     textColor,
     index,
+    image,
 }: ServiceCardProps) {
     // Map title to form value if not provided
     const getServiceValue = () => {
-        if (title.includes("Automotor")) return "auto";
+        if (title.includes("Automotor")) return "automotor";
+        if (title.includes("Motovehiculo")) return "motovehiculo";
         if (title.includes("Hogar")) return "hogar";
         if (title.includes("Vida")) return "vida";
-        if (title.includes("Accidentes")) return "accidentes";
-        if (title.includes("Empresas")) return "empresas";
+        if (title.includes("accidentes")) return "accidentes";
+        if (title.includes("ART")) return "art";
+        if (title.includes("comercios")) return "comercios";
+        if (title.includes("legales")) return "legales";
+        if (title.includes("cauciones")) return "cauciones";
         return "otro";
     };
 
@@ -47,38 +54,58 @@ export function ServiceCard({
         <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="group relative p-8 h-full card-glass rounded-4xl hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between hover:bg-white/5"
+            style={{ transform: 'translateZ(0)' }}
+            className="group relative h-full bg-white rounded-3xl hover:-translate-y-2 transition-all duration-300 flex flex-col shadow-md hover:shadow-2xl border border-slate-200 overflow-hidden"
         >
-            <div className="mb-6 relative z-10">
+            {/* Top Section: Image */}
+            <div className="relative h-48 w-full overflow-hidden">
+                {image ? (
+                    <Image
+                        src={image}
+                        alt={title}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                ) : (
+                    <div className="w-full h-full bg-brand-navy/10 flex items-center justify-center text-slate-300">
+                        No image available
+                    </div>
+                )}
+                {/* Visual Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
+            </div>
+
+            {/* Content Section */}
+            <div className="relative p-8 pt-10 flex flex-col flex-1">
+                {/* Floating Icon */}
                 <div className={cn(
-                    "w-16 h-16 flex items-center justify-center mb-6 rounded-2xl bg-white/5 shadow-sm border border-white/10 backdrop-blur-md transition-colors group-hover:bg-brand-blue group-hover:border-transparent",
+                    "absolute -top-8 left-8 w-16 h-16 flex items-center justify-center rounded-2xl bg-white shadow-xl border border-slate-50 transition-colors group-hover:bg-brand-blue group-hover:border-brand-blue z-10",
                 )}>
-                    <Icon className="w-8 h-8 text-white group-hover:text-white" />
+                    <Icon className="w-8 h-8 text-brand-blue group-hover:text-white transition-colors" />
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4 text-white leading-relaxed">
-                    {title}
-                </h3>
+                <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-4 text-brand-navy leading-tight">
+                        {title}
+                    </h3>
 
-                <p className="text-brand-slate leading-relaxed font-normal group-hover:text-brand-silver transition-colors">
-                    {description}
-                </p>
+                    <p className="text-brand-slate leading-relaxed font-normal">
+                        {description}
+                    </p>
+                </div>
+
+                <div
+                    onClick={handleConsultClick}
+                    className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between group/link cursor-pointer"
+                >
+                    <span className="text-sm font-bold uppercase tracking-widest text-brand-blue group-hover:translate-x-1 transition-transform">
+                        Consultar
+                    </span>
+                    <ChevronRight className="w-5 h-5 text-brand-blue group-hover/link:translate-x-1 transition-transform" />
+                </div>
             </div>
-
-            <div
-                onClick={handleConsultClick}
-                className="relative z-10 mt-6 pt-6 border-t border-white/10 flex items-center justify-between group/link cursor-pointer"
-            >
-                <span className="text-sm font-bold uppercase tracking-widest gradient-text-light group-hover:translate-x-1 transition-transform">
-                    Consultar
-                </span>
-                <ChevronRight className="w-5 h-5 text-brand-cyan group-hover/link:translate-x-1 transition-transform" />
-            </div>
-
-            {/* Hover Glow */}
-            <div className="absolute inset-0 bg-linear-to-br from-brand-cyan/5 to-brand-blue/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-4xl pointer-events-none" />
         </motion.div>
     );
 }

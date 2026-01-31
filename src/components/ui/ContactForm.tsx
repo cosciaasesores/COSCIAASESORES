@@ -12,6 +12,7 @@ export function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
+        phone: "",
         message: ""
     });
 
@@ -19,6 +20,7 @@ export function ContactForm() {
     const [errors, setErrors] = useState({
         name: false,
         email: false,
+        phone: false,
         service: false,
         message: false
     });
@@ -40,6 +42,7 @@ export function ContactForm() {
         const newErrors = {
             name: formData.name.trim() === "",
             email: formData.email.trim() === "" || !isValidEmail(formData.email),
+            phone: formData.phone.trim() === "",
             service: selectedService === "",
             message: formData.message.trim() === ""
         };
@@ -61,18 +64,28 @@ export function ContactForm() {
 
         setStatus("loading");
 
-        // Simulate API call
-        setTimeout(() => {
-            // For demo purposes, we'll set it to success
-            setStatus("success");
+        try {
+            const response = await fetch('/api/send-contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    ...formData,
+                    service: selectedService
+                })
+            });
 
-            // Reset form
-            setFormData({ name: "", email: "", message: "" });
-            setSelectedService("");
-
-            // Reset after 5 seconds
-            setTimeout(() => setStatus("idle"), 5000);
-        }, 1500);
+            if (response.ok) {
+                setStatus("success");
+                setFormData({ name: "", email: "", phone: "", message: "" });
+                setSelectedService("");
+                setTimeout(() => setStatus("idle"), 5000);
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Error sending contact form:", error);
+            setStatus("error");
+        }
     };
 
     const handleInputChange = (field: keyof typeof formData, value: string) => {
@@ -145,8 +158,8 @@ export function ContactForm() {
                         onChange={(e) => handleInputChange('name', e.target.value)}
                         placeholder="Tu nombre"
                         className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all placeholder:text-brand-slate/50 text-white ${errors.name
-                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
                             }`}
                     />
                     {errors.name && (
@@ -168,8 +181,8 @@ export function ContactForm() {
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         placeholder="tu@email.com"
                         className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all placeholder:text-brand-slate/50 text-white ${errors.email
-                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
                             }`}
                     />
                     {errors.email && (
@@ -181,40 +194,70 @@ export function ContactForm() {
                 </div>
             </div>
 
-            <div className="space-y-2 mb-8">
-                <label htmlFor="service" className="block text-xs font-bold uppercase tracking-widest text-brand-silver pl-1">
-                    Servicio de Interés
-                </label>
-                <div className="relative">
-                    <select
-                        id="service"
-                        name="service"
-                        value={selectedService}
-                        onChange={(e) => {
-                            setSelectedService(e.target.value);
-                            setErrors(prev => ({ ...prev, service: false }));
-                        }}
-                        className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all appearance-none cursor-pointer text-white [&>option]:bg-brand-navy ${errors.service
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div className="space-y-2">
+                    <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-widest text-brand-silver pl-1">
+                        Teléfono / WhatsApp
+                    </label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange('phone', e.target.value)}
+                        placeholder="Ej: 11 1234 5678"
+                        className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all placeholder:text-brand-slate/50 text-white ${errors.phone
+                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                            : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                            }`}
+                    />
+                    {errors.phone && (
+                        <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="w-4 h-4" />
+                            Este campo es obligatorio
+                        </p>
+                    )}
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="service" className="block text-xs font-bold uppercase tracking-widest text-brand-silver pl-1">
+                        Servicio de Interés
+                    </label>
+                    <div className="relative">
+                        <select
+                            id="service"
+                            name="service"
+                            value={selectedService}
+                            onChange={(e) => {
+                                setSelectedService(e.target.value);
+                                setErrors(prev => ({ ...prev, service: false }));
+                            }}
+                            className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all appearance-none cursor-pointer text-white [&>option]:bg-brand-navy ${errors.service
                                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
                                 : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
-                            }`}
-                    >
-                        <option value="">Seleccionar opción</option>
-                        <option value="auto">Seguro Automotor</option>
-                        <option value="hogar">Seguro de Hogar</option>
-                        <option value="vida">Seguro de Vida</option>
-                        <option value="accidentes">Accidentes Personales</option>
-                        <option value="empresas">Seguros de Empresas / ART</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                    <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-slate pointer-events-none" />
+                                }`}
+                        >
+                            <option value="">Seleccionar opción</option>
+                            <option value="automotor">Seguro Automotor</option>
+                            <option value="motovehiculo">Seguro Motovehículo</option>
+                            <option value="hogar">Seguro Hogar</option>
+                            <option value="vida">Seguro de Vida</option>
+                            <option value="accidentes">Accidentes Personales</option>
+                            <option value="art">Seguros para ART</option>
+                            <option value="comercios">Seguros para Comercios</option>
+                            <option value="legales">Seguro de Legales</option>
+                            <option value="cauciones">Seguro de Cauciones</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                        <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-slate pointer-events-none" />
+                    </div>
+                    {errors.service && (
+                        <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="w-4 h-4" />
+                            Seleccioná un servicio
+                        </p>
+                    )}
                 </div>
-                {errors.service && (
-                    <p className="text-red-400 text-sm mt-1 flex items-center gap-1">
-                        <AlertCircle className="w-4 h-4" />
-                        Seleccioná un servicio
-                    </p>
-                )}
             </div>
 
             <div className="space-y-2 mb-10">
@@ -229,8 +272,8 @@ export function ContactForm() {
                     onChange={(e) => handleInputChange('message', e.target.value)}
                     placeholder="¿En qué podemos ayudarte?"
                     className={`w-full px-4 py-4 bg-white/5 border rounded-xl focus:ring-1 outline-none transition-all resize-none placeholder:text-brand-slate/30 text-white ${errors.message
-                            ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                            : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                        : 'border-white/10 focus:border-brand-cyan focus:ring-brand-cyan'
                         }`}
                 ></textarea>
                 {errors.message && (

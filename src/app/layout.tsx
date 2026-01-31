@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "@fontsource/outfit";
 import "@fontsource/inter";
 import "./globals.css";
-import { StructuredData } from "@/components/StructuredData";
-import { ClientLayout } from "@/components/ClientLayout";
+import { StructuredData } from "@/components/layout/StructuredData";
+import { ClientLayout } from "@/components/layout/ClientLayout";
 
 
 export const metadata: Metadata = {
@@ -57,7 +57,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased text-brand-navy bg-brand-silver">
         <ClientLayout>
-          <main>{children}</main>
+          {children}
         </ClientLayout>
       </body>
     </html>

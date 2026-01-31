@@ -1,4 +1,4 @@
-import { StructuredData } from "@/components/StructuredData";
+import { StructuredData } from "@/components/layout/StructuredData";
 
 export const metadata = {
     title: "Reportar Siniestro | Coscia Asesores de Seguros",

@@ -1,6 +1,6 @@
 "use client";
 
-import { ClaimsReport } from "@/components/ClaimsReport";
+import { ClaimsReport } from "@/components/sections/ClaimsReport";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
@@ -22,8 +22,8 @@ export default function SiniestrosPage() {
             {/* Simple Header - Matches Navbar pill behavior */}
             <header
                 className={`fixed z-50 transition-all duration-500 ease-out ${isScrolled
-                        ? "top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[80%] lg:w-[60%] rounded-full bg-brand-navy/95 backdrop-blur-lg py-3 px-8 border border-white/10 shadow-2xl"
-                        : "top-0 left-0 right-0 w-full bg-brand-navy py-6 px-6"
+                    ? "top-6 left-1/2 -translate-x-1/2 w-[95%] md:w-[80%] lg:w-[60%] rounded-full bg-brand-navy/95 backdrop-blur-lg py-3 px-8 border border-white/10 shadow-2xl"
+                    : "top-0 left-0 right-0 w-full bg-brand-navy py-6 px-6"
                     }`}
             >
                 <div className={`mx-auto flex justify-between items-center transition-all ${isScrolled ? "w-full" : "container"
@@ -42,7 +42,7 @@ export default function SiniestrosPage() {
                         </div>
                         <span className={`font-black tracking-tighter text-white uppercase flex flex-col leading-none transition-all ${isScrolled ? "text-lg" : "text-xl"
                             }`}>
-                            Coscia <span className="text-brand-cyan text-[10px] tracking-[0.3em] font-medium mt-0.5">Asesores</span>
+                            Coscia Asesores <span className="text-brand-cyan text-[10px] tracking-widest font-medium mt-0.5">Productores de Seguros</span>
                         </span>
                     </Link>
 
