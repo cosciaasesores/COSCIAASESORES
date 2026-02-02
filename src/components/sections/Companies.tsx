@@ -72,22 +72,43 @@ export function Companies() {
 
                 {/* Optimized Logo Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 max-w-7xl mx-auto">
-                    {companies.map((company, index) => (
-                        <motion.div
-                            key={company.logo}
-                            {...animateProps(index * 0.05)}
-                            className="bg-white border border-slate-100 rounded-2xl p-4 md:p-8 transition-all duration-300 hover:shadow-xl flex items-center justify-center aspect-video relative overflow-hidden shadow-sm group"
-                        >
-                            <div className="relative w-full h-full flex items-center justify-center">
-                                <Image
-                                    src={company.logo}
-                                    alt={`${company.name} logo`}
-                                    fill
-                                    className="object-contain p-2 md:p-4 transition-all duration-500"
-                                />
-                            </div>
-                        </motion.div>
-                    ))}
+                    {companies.map((company, index) => {
+                        const lowName = company.name.toLowerCase();
+                        let paddingClass = "p-1 md:p-2"; // Default "large" padding
+
+                        if (
+                            lowName.includes("meridional") ||
+                            lowName.includes("federacion") ||
+                            lowName.includes("provincia art") ||
+                            lowName.includes("prov art") ||
+                            lowName.includes("la segunda")
+                        ) {
+                            paddingClass = "p-0 scale-110 md:scale-125"; // Maximum size for these small/detailed or thin logos
+                        } else if (lowName.includes("experta")) {
+                            paddingClass = "p-6 md:p-10"; // Shrink Experta which was too big
+                        } else if (lowName.includes("sancor") || lowName.includes("allianz") || lowName.includes("mercantil") || lowName.includes("noble")) {
+                            paddingClass = "p-2 md:p-3";
+                        } else if (lowName.includes("fed") || lowName.includes("provincia")) {
+                            paddingClass = "p-1 md:p-2";
+                        }
+
+                        return (
+                            <motion.div
+                                key={company.logo}
+                                {...animateProps(index * 0.05)}
+                                className="bg-white border border-slate-100 rounded-2xl p-2 md:p-4 transition-all duration-300 hover:shadow-xl flex items-center justify-center aspect-video relative overflow-hidden shadow-sm group"
+                            >
+                                <div className="relative w-full h-full flex items-center justify-center">
+                                    <Image
+                                        src={company.logo}
+                                        alt={`${company.name} logo`}
+                                        fill
+                                        className={`object-contain ${paddingClass} transition-all duration-500 group-hover:scale-110`}
+                                    />
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </section>

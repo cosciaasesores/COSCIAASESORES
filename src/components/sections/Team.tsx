@@ -8,13 +8,11 @@ export function Team() {
         {
             name: "Gustavo Juan Coscia",
             role: "PAS Matricula 52.032",
-            bio: "Socio Fundador con más de 30 años de trayectoria garantizando el profesionalismo y la ética en cada asesoramiento.",
             initials: "GC"
         },
         {
             name: "Dr. Nahuel Ignacio Coscia Fernandez",
             role: "PAS Matricula 93.900",
-            bio: "Director Ejecutivo comprometido con la excelencia administrativa y la satisfacción de nuestros asegurados.",
             initials: "NC"
         }
     ];
@@ -52,11 +50,7 @@ export function Team() {
                             </div>
 
                             <h3 className="text-2xl font-bold text-brand-navy mb-1">{member.name}</h3>
-                            <div className="text-brand-blue text-sm font-bold uppercase tracking-wider mb-4">{member.role}</div>
-
-                            <p className="text-brand-slate leading-relaxed mb-6 italic">
-                                &quot;{member.bio}&quot;
-                            </p>
+                            <div className="text-brand-blue text-sm font-bold uppercase tracking-wider">{member.role}</div>
                         </motion.div>
                     ))}
                 </div>

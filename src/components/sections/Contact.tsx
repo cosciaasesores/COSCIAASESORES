@@ -16,7 +16,7 @@ export function Contact() {
     }, []);
 
     return (
-        <section id="contacto" className="py-32 bg-brand-navy relative dark-section font-sans">
+        <section id="contacto" className="pt-32 pb-8 bg-brand-navy relative dark-section font-sans">
             {/* Background Mesh - HIDDEN ON MOBILE FOR PERFORMANCE */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-cyan/5 rounded-full blur-[100px]" />
@@ -99,10 +99,20 @@ export function Contact() {
                             <div className="pt-8 border-t border-white/10">
                                 <div className="text-xs font-bold uppercase tracking-widest text-brand-slate mb-6">Síguenos en Redes</div>
                                 <div className="flex gap-4">
-                                    <a href="#" className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-transparent transition-all group">
+                                    <a
+                                        href="https://www.instagram.com/cosciaasesores?igsh=MXFiaDAzbnJ2cHJzdQ%3D%3D&utm_source=qr"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-transparent transition-all group"
+                                    >
                                         <Instagram className="w-5 h-5 text-white" />
                                     </a>
-                                    <a href="#" className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-transparent transition-all group">
+                                    <a
+                                        href="https://www.facebook.com/share/1KHLXD2vWP/?mibextid=wwXIfr"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue hover:border-transparent transition-all group"
+                                    >
                                         <Facebook className="w-5 h-5 text-white" />
                                     </a>
                                 </div>

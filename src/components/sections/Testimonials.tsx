@@ -96,10 +96,10 @@ export function Testimonials() {
                 <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-white to-transparent z-10" />
 
                 <motion.div
-                    className="flex gap-8 px-4 hover:[animation-play-state:paused]"
+                    className="flex gap-8 hover:[animation-play-state:paused] py-4"
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{
-                        duration: 80, // Velocidad extremadamente lenta
+                        duration: 60, // Ligeramente más rápido para que se note el movimiento pero siga siendo suave
                         ease: "linear",
                         repeat: Infinity,
                     }}
@@ -107,7 +107,7 @@ export function Testimonials() {
                     {doubledTestimonials.map((t, i) => (
                         <div
                             key={i}
-                            className="w-[350px] md:w-[450px] shrink-0 p-8 rounded-3xl border border-slate-100 bg-slate-50 transition-all duration-300 hover:bg-white hover:shadow-xl relative flex flex-col"
+                            className="w-[320px] md:w-[450px] shrink-0 p-8 rounded-3xl border border-slate-100 bg-slate-50 transition-all duration-300 hover:bg-white hover:shadow-xl relative flex flex-col"
                         >
                             <Quote className="w-10 h-10 text-brand-blue/10 absolute top-6 right-6" />
 

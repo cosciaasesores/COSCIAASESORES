@@ -8,8 +8,8 @@ import { ShieldCheck, Headset } from "lucide-react";
 export function About() {
     const images = [
         "https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=1200&auto=format&fit=crop", // Familia
-        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=1200&auto=format&fit=crop", // Auto
-        "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1200&auto=format&fit=crop"  // Hogar/Seguridad
+        "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1200&auto=format&fit=crop", // Auto (SUV genérico profesional)
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop"  // Hogar (Casa moderna profesional)
     ];
 
     const [index, setIndex] = useState(0);

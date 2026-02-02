@@ -1,6 +1,6 @@
 "use client";
 
-import { Car, Home, Heart, UserCheck, Briefcase, Bike, HardHat, Store, Gavel, FileCheck } from "lucide-react";
+import { Car, Home, Ship, UserCheck, Briefcase, Bike, HardHat, Store, Gavel, FileCheck } from "lucide-react";
 import { ServiceCard } from "../ui/ServiceCard";
 import { ResilientContainer } from "../ui/ResilientContainer";
 
@@ -27,15 +27,15 @@ const services = [
         icon: Home,
         color: "bg-emerald-500/10",
         textColor: "text-emerald-500",
-        image: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=800&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=800&auto=format&fit=crop",
     },
     {
         title: "Embarcaciones de Placer",
         description: "Coberturas desde Responsabilidad Civil y Daño total hasta Todo riesgo con navegación marítima en Brasil y Uruguay.",
-        icon: Heart,
-        color: "bg-rose-500/10",
-        textColor: "text-rose-500",
-        image: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=800&auto=format&fit=crop",
+        icon: Ship,
+        color: "bg-blue-600/10",
+        textColor: "text-blue-600",
+        image: "https://images.unsplash.com/photo-1540946485063-a40da27545f8?q=80&w=800&auto=format&fit=crop",
     },
     {
         title: "Accidentes Personales",
