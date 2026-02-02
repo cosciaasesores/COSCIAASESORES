@@ -57,11 +57,11 @@ export function FAQ() {
         },
         {
             q: "¿Qué hago si tengo un accidente o siniestro?",
-            a: "Comunicate con nosotros a través del botón de siniestros, donde podrás cargar toda la información necesaria, o directamente por WhatsApp. Si faltara alguna documentación, nos contactaremos con vos. Además, en la sección de siniestros vas a encontrar preguntas frecuentes con toda la información necesaria para una gestión ágil."
+            a: "Comunicate con nosotros a través del botón de siniestros, donde podrás cargar toda la información necesaria, o directamente por WhatsApp. Si falta alguna documentación, nos pondremos en contacto con vos. Además, en la sección de siniestros vas a encontrar preguntas frecuentes con toda la información necesaria para una gestión ágil."
         },
         {
             q: "¿En qué me beneficia contratar mi seguro mediante un productor asesor de seguros?",
-            a: "No solo contratás una póliza, sino que accedés a asesoramiento profesional y acompañamiento permanente. Estamos capacitados para entender tus necesidades y ayudarte en cada etapa, para que la gestión de tu seguro sea clara, simple y eficiente. Analizamos cada situación y adaptamos la cobertura para que obtengas la mejor relación entre protección y costo."
+            a: "No solo contratás una póliza, sino que accedés a asesoramiento profesional y acompañamiento permanente. Estamos capacitados para entender tus necesidades y ayudarte en cada etapa, para que la gestión de tu seguro sea clara, simple y eficiente. Analizamos cada situación y adaptamos la cobertura para que obtengas la mejor relación entre cobertura y costo."
         },
         {
             q: "¿Cuentan con atención presencial?",

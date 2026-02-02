@@ -70,7 +70,7 @@ export function ClaimsReport() {
         },
         {
             q: "Si tengo seguro contra todo riesgo, ¿qué debo hacer?",
-            a: "Una vez informado el siniestro a la compañía, coordinamos la inspección del vehículo en el taller de tu confianza o en el que elijas para realizar la reparación. Luego de la inspección, la compañía enviará la orden de trabajo y los repuestos necesarios para que el taller pueda comenzar con la reparación."
+            a: "Una vez informado el siniestro a la compañía, coordinamos la inspección del vehículo en el taller de tu confianza o en el que elijas para realizar la reparación. Luego de la inspección, la compañía enviará la orden de trabajo y los repuestos necesarios para que el taller pueda comenzar."
         },
         {
             q: "Si no fue culpa mía el siniestro, ¿debo abonar la franquicia igual?",
@@ -95,11 +95,11 @@ export function ClaimsReport() {
         },
         {
             q: "¿Qué pasa si a causa del choque tengo lesiones?",
-            a: "Es fundamental acudir a un hospital o clínica para ser evaluado. Toda lesión derivada del siniestro puede dar lugar al cobro de una indemnización."
+            a: "Es fundamental acudir a un hospital o clínica para ser evaluado. Toda lesión derivada del siniestro da lugar al cobro de una indemnización"
         },
         {
             q: "¿Cuánto tardo en cobrar mi indemnización?",
-            a: "El plazo depende de la compañía aseguradora de la persona que ocasionó el siniestro. Algunas compañías pueden resolver el reclamo en 30 a 45 días, mientras que otras pueden demorar 6 meses o más."
+            a: "El plazo depende de la compañía que tiene contratada la persona que ocasionó el siniestro. Algunas compañías pueden resolver el reclamo en 30 a 45 días, mientras que otras pueden demorar 6 meses o más."
         }
     ];
 
