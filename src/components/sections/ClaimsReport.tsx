@@ -33,16 +33,73 @@ export function ClaimsReport() {
 
     const faqs = [
         {
-            q: "\u00BFCu\u00E1nto tiempo tengo para denunciar el siniestro?",
-            a: "Por ley, ten\u00E9s hasta 72 horas h\u00E1biles desde ocurrido el hecho para realizar la denuncia administrativa ante tu aseguradora."
+            q: "¿Qué datos son esenciales para la carga del siniestro?",
+            a: (
+                <div className="space-y-2">
+                    <p>Es importante contar con la siguiente información:</p>
+                    <ul className="list-none space-y-1">
+                        <li>• Día y hora en que ocurrió el siniestro.</li>
+                        <li>• Calle, entrecalles y localidad.</li>
+                        <li>• Relato claro de lo sucedido.</li>
+                        <li>• Datos del tercero involucrado: nombre completo, DNI, licencia de conducir, domicilio, teléfono, marca, modelo y patente del vehículo, y compañía de seguros.</li>
+                    </ul>
+                    <p className="mt-2">Para una gestión más ágil, te recomendamos sacar fotos de toda la documentación y datos solicitados, y guardar el contacto del tercero por cualquier eventualidad.</p>
+                </div>
+            )
         },
         {
-            q: "\u00BFQu\u00E9 fotos son indispensables?",
-            a: "Las m\u00E1s importantes son las de los da\u00F1os (propios y de terceros), el lugar del hecho y la documentaci\u00F3n de las partes involucradas (licencia y c\u00E9dula)."
+            q: "¿Cuánto tiempo tengo para denunciar el siniestro?",
+            a: "Contás con un plazo de 72 horas desde que ocurrió el hecho o desde que tomaste conocimiento del mismo para realizar la denuncia administrativa."
         },
         {
-            q: "\u00BFC\u00F3mo sigue el tr\u00E1mite despu\u00E9s de enviar este reporte?",
-            a: "Una vez enviado, un asesor revisar\u00E1 la informaci\u00F3n y te contactar\u00E1 para formalizar la denuncia y coordinar la inspecci\u00F3n si fuera necesario."
+            q: "¿Qué fotos son indispensables?",
+            a: (
+                <div className="space-y-2">
+                    <p>Necesitamos:</p>
+                    <ul className="list-none space-y-1">
+                        <li>• Fotos de la licencia de conducir y cédula del asegurado y del tercero.</li>
+                        <li>• Fotos claras de los daños ocasionados (propios y de terceros).</li>
+                        <li>• Foto de la tarjeta o comprobante del seguro del tercero.</li>
+                    </ul>
+                </div>
+            )
+        },
+        {
+            q: "¿Cómo sigue el trámite después de enviar este reporte?",
+            a: "Una vez que el formulario esté completo y enviado, analizaremos la información recibida y nos pondremos en contacto con vos para finalizar la gestión de la denuncia. En ese contacto, te explicaremos de manera clara cuáles son los pasos a seguir y cómo continúa el proceso según cada caso."
+        },
+        {
+            q: "Si tengo seguro contra todo riesgo, ¿qué debo hacer?",
+            a: "Una vez informado el siniestro a la compañía, coordinamos la inspección del vehículo en el taller de tu confianza o en el que elijas para realizar la reparación. Luego de la inspección, la compañía enviará la orden de trabajo y los repuestos necesarios para que el taller pueda comenzar con la reparación."
+        },
+        {
+            q: "Si no fue culpa mía el siniestro, ¿debo abonar la franquicia igual?",
+            a: "Sí, la franquicia debe abonarse inicialmente en todos los casos. La diferencia es que, cuando el siniestro no fue tu responsabilidad, se gestiona el reclamo correspondiente ante la compañía de seguros de la persona que ocasionó el choque."
+        },
+        {
+            q: "¿Tiene algún costo el reclamo de la franquicia o de la reparación de mi vehículo?",
+            a: "No. Nos encargamos de gestionar el reclamo de terceros ante compañías colegas sin costo alguno, buscando siempre la mejor indemnización posible."
+        },
+        {
+            q: "¿Qué necesito para iniciar el reclamo de terceros?",
+            a: (
+                <div className="space-y-2">
+                    <p>Es fundamental contar con:</p>
+                    <ul className="list-none space-y-1">
+                        <li>• Fotos de los daños (todas las necesarias para dimensionar correctamente el perjuicio).</li>
+                        <li>• Un presupuesto de taller que detalle el valor de la reparación del vehículo.</li>
+                    </ul>
+                    <p className="mt-2">El resto de la información la gestionamos nosotros para dar inicio al trámite.</p>
+                </div>
+            )
+        },
+        {
+            q: "¿Qué pasa si a causa del choque tengo lesiones?",
+            a: "Es fundamental acudir a un hospital o clínica para ser evaluado. Toda lesión derivada del siniestro puede dar lugar al cobro de una indemnización."
+        },
+        {
+            q: "¿Cuánto tardo en cobrar mi indemnización?",
+            a: "El plazo depende de la compañía aseguradora de la persona que ocasionó el siniestro. Algunas compañías pueden resolver el reclamo en 30 a 45 días, mientras que otras pueden demorar 6 meses o más."
         }
     ];
 

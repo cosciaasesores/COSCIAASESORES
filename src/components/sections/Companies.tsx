@@ -76,19 +76,44 @@ export function Companies() {
                         const lowName = company.name.toLowerCase();
                         let paddingClass = "p-1 md:p-2"; // Default "large" padding
 
-                        if (
+                        if (lowName.includes("segunda")) {
+                            return (
+                                <motion.div
+                                    key={company.logo}
+                                    {...animateProps(index * 0.05)}
+                                    className="bg-white border border-slate-100 rounded-2xl p-2 md:p-4 transition-all duration-300 hover:shadow-xl flex items-center justify-center aspect-video relative overflow-hidden shadow-sm group"
+                                >
+                                    <div className="relative w-full h-full flex items-center justify-center">
+                                        <Image
+                                            src={company.logo}
+                                            alt={`${company.name} logo`}
+                                            fill
+                                            style={{ transform: isMobile ? 'scale(1.5)' : 'scale(1.8)' }}
+                                            className="object-contain transition-all duration-500 group-hover:scale-110"
+                                        />
+                                    </div>
+                                </motion.div>
+                            );
+                        }
+
+                        if (lowName.includes("prov art")) {
+                            paddingClass = "p-0 scale-140 md:scale-180"; // Prov ART stays massive
+                        } else if (
+                            lowName.includes("allianz") ||
+                            lowName.includes("prevencion") ||
+                            lowName.includes("metropol") ||
                             lowName.includes("meridional") ||
                             lowName.includes("federacion") ||
-                            lowName.includes("provincia art") ||
-                            lowName.includes("prov art") ||
-                            lowName.includes("la segunda")
+                            lowName.includes("provincia")
                         ) {
-                            paddingClass = "p-0 scale-110 md:scale-125"; // Maximum size for these small/detailed or thin logos
+                            paddingClass = "p-0 scale-110 md:scale-120"; // Standard large size
+                        } else if (lowName.includes("mercantil")) {
+                            paddingClass = "p-0 scale-105 md:scale-112"; // Slightly smaller than the group above
                         } else if (lowName.includes("experta")) {
-                            paddingClass = "p-6 md:p-10"; // Shrink Experta which was too big
-                        } else if (lowName.includes("sancor") || lowName.includes("allianz") || lowName.includes("mercantil") || lowName.includes("noble")) {
+                            paddingClass = "p-6 md:p-10"; // Experta small
+                        } else if (lowName.includes("sancor") || lowName.includes("noble")) {
                             paddingClass = "p-2 md:p-3";
-                        } else if (lowName.includes("fed") || lowName.includes("provincia")) {
+                        } else if (lowName.includes("fed") || lowName.includes("galicia")) {
                             paddingClass = "p-1 md:p-2";
                         }
 

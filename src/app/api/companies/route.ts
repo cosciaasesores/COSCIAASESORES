@@ -11,7 +11,7 @@ export async function GET() {
         const logos = files
             .filter(file => /\.(png|jpe?g|svg|webp)$/i.test(file))
             .map(file => ({
-                name: file.replace(/(_logo)?\.[^.]+$/, '').replace(/_/g, ' '),
+                name: file.replace(/(_logo)?\.[^.]+$/, '').replace(/[_-]/g, ' '),
                 logo: `/companies/${file}`
             }));
 
