@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
     { name: "Inicio", href: "#inicio" },
-    { name: "Servicios", href: "#servicios" },
+    { name: "Coberturas", href: "#servicios" },
     { name: "Compañías", href: "#socios" },
     { name: "Nosotros", href: "#nosotros" },
     { name: "FAQ", href: "#faq" },
@@ -91,13 +91,26 @@ export function Navbar() {
                     <a
                         href="#contacto"
                         className={cn(
-                            "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20 flex items-center justify-center",
+                            "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20 flex items-center justify-center relative overflow-hidden group",
                             isScrolled
                                 ? "bg-brand-blue text-white px-6 py-2 text-xs"
                                 : "bg-brand-blue text-white px-8 py-3 text-sm hover:bg-white hover:text-brand-blue"
                         )}
                     >
-                        {isScrolled ? "Cotizar Gratis" : "Cotización Gratis"}
+                        <span className="relative z-10">{isScrolled ? "Cotizar Gratis" : "Cotización Gratis"}</span>
+
+                        {/* Shimmer Effect - ONLY ON DESKTOP */}
+                        <motion.div
+                            className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent skew-x-12 hidden md:block"
+                            initial={{ x: "-150%" }}
+                            animate={{ x: "150%" }}
+                            transition={{
+                                duration: 1.5,
+                                repeat: Infinity,
+                                repeatDelay: 3,
+                                ease: "easeInOut",
+                            }}
+                        />
                     </a>
                 </div>
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { ShieldCheck, Headset } from "lucide-react";
 
 export function About() {
     const images = [
@@ -57,8 +58,8 @@ export function About() {
                             viewport={{ once: true }}
                             className="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight"
                         >
-                            Más que seguros, <br />
-                            <span className="text-brand-blue">Aliados Estratégicos.</span>
+                            Mas que seguros, <br />
+                            <span className="text-brand-blue">somos tu aliado estratégico.</span>
                         </motion.h2>
 
                         <motion.div
@@ -69,21 +70,25 @@ export function About() {
                             className="text-slate-600 text-lg leading-relaxed space-y-6"
                         >
                             <p>
-                                En <strong>Coscia Seguros</strong>, entendemos que detrás de cada póliza hay un proyecto de vida, una empresa familiar o el sueño de una casa propia. No vendemos &quot;papeles&quot;, vendemos la certeza de que, pase lo que pase, vas a poder seguir adelante.
+                                En <strong>Coscia Asesores Productores de Seguros</strong>, entendemos que detrás de cada bien a cubrir hay un proyecto de vida, una empresa familiar o el sueño de una casa propia. No vendemos &quot;papeles&quot;, vendemos la certeza de que, pase lo que pase, vas a poder seguir adelante.
                             </p>
                             <p>
-                                Con una trayectoria basada en la <strong>ética innegociable</strong>, combinamos la calidez del asesoramiento tradicional con la agilidad de la tecnología moderna para estar siempre un paso adelante de tus necesidades.
+                                Con una trayectoria basada en la <strong>ética innegociable</strong>, buscamos constantemente la satisfacción de nuestros clientes ante cualquier eventualidad. Respaldando cada gestión con transparencia, valores y compromiso.
                             </p>
                         </motion.div>
 
-                        <div className="grid grid-cols-2 gap-8 mt-12 border-t border-slate-200 pt-8">
-                            <div>
-                                <div className="text-4xl font-bold mb-2">+15</div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 border-t border-slate-200 pt-8 items-center">
+                            <div className="text-center flex flex-col items-center">
+                                <ShieldCheck className="w-8 h-8 text-brand-blue/40 mb-2" />
+                                <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Respaldo Total</div>
+                            </div>
+                            <div className="text-center">
+                                <div className="text-4xl font-bold mb-1 text-brand-navy">+25</div>
                                 <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Años de Trayectoria</div>
                             </div>
-                            <div>
-                                <div className="text-4xl font-bold mb-2">+2000</div>
-                                <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Clientes Activos</div>
+                            <div className="text-center flex flex-col items-center">
+                                <Headset className="w-8 h-8 text-brand-blue/40 mb-2" />
+                                <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Asesoría 24/7</div>
                             </div>
                         </div>
                     </div>

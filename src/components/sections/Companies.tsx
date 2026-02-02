@@ -65,7 +65,7 @@ export function Companies() {
                             No trabajamos para una aseguradora. <span className="text-brand-blue font-bold">Trabajamos para vos.</span>
                         </p>
                         <p className="mt-4 text-brand-slate/80">
-                            Contamos con {companies.length} compañías de primer nivel para tu seguridad.
+                            Contamos con mas de 10 compañías de primer nivel para que tengas cubierto tu riesgo al mejor precio y cobertura posible.
                         </p>
                     </motion.div>
                 </div>
@@ -76,14 +76,14 @@ export function Companies() {
                         <motion.div
                             key={company.logo}
                             {...animateProps(index * 0.05)}
-                            className="bg-white border border-slate-100 rounded-2xl p-4 md:p-8 transition-all duration-300 hover:shadow-xl flex items-center justify-center aspect-video relative overflow-hidden shadow-sm"
+                            className="bg-white border border-slate-100 rounded-2xl p-4 md:p-8 transition-all duration-300 hover:shadow-xl flex items-center justify-center aspect-video relative overflow-hidden shadow-sm group"
                         >
                             <div className="relative w-full h-full flex items-center justify-center">
                                 <Image
                                     src={company.logo}
                                     alt={`${company.name} logo`}
                                     fill
-                                    className="object-contain p-2 md:p-4 filter grayscale md:grayscale group-hover:grayscale-0 transition-all duration-500"
+                                    className="object-contain p-2 md:p-4 transition-all duration-500"
                                 />
                             </div>
                         </motion.div>

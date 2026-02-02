@@ -6,63 +6,63 @@ import { Star, Quote } from "lucide-react";
 export function Testimonials() {
     const testimonials = [
         {
-            name: "Roberto Méndez",
-            role: "Dueño de Pyme",
-            content: "La rapidez con la que resolvieron el siniestro de mi flota fue increíble. En 48hs tenía todo liquidado. Unos genios.",
+            name: "Daniel Szulanski",
+            role: "Cliente Particular",
+            content: "Hace años que les confío los autos de la familia. Siempre me consiguen las mejores cláusulas de ajuste para no quedar desactualizado con la inflación. Súper recomendables.",
             stars: 5
         },
         {
-            name: "Ana Laura Gutiérrez",
+            name: "Marta Villalba",
             role: "Seguro de Hogar",
-            content: "Excelente atención. Me asesoraron para no pagar de más y tener la cobertura justa que necesitaba mi casa.",
+            content: "Tuve un problema con un caño en casa y me cubrieron todo rapidísimo. Lo que más valoro es que les escribís por WhatsApp y te contestan ellos, no un bot.",
             stars: 5
         },
         {
-            name: "Carlos Echeverría",
-            role: "Gerente Comercial",
-            content: "Coscia Asesores nos brinda la tranquilidad que nuestra empresa necesita. Profesionales, éticos y siempre presentes.",
+            name: "Gabriel Percivall",
+            role: "Empresario",
+            content: "Excelente atención de Gustavo y Nahuel. Me asesoraron con la ART de mis empleados y me bajaron los costos un montón comparado a lo que venía pagando directamente.",
             stars: 5
         },
         {
-            name: "Lucía Fernández",
-            role: "Profesional Independiente",
-            content: "Contraté el seguro de retiro y la atención fue súper personalizada. Me explicaron cada detalle con mucha paciencia.",
-            stars: 5
-        },
-        {
-            name: "Martín Rodríguez",
-            role: "Seguro Automotor",
-            content: "Tuve un choque leve y por WhatsApp me guiaron en el momento. La app para cargar fotos es muy cómoda.",
-            stars: 5
-        },
-        {
-            name: "Elena Vázquez",
-            role: "Comercio Minorista",
-            content: "Aseguré mi local con ellos y me salvaron tras una inundación. La respuesta fue inmediata y humana.",
-            stars: 5
-        },
-        {
-            name: "Jorge Schmidt",
-            role: "Consorcio Edificio",
-            content: "Llevamos años con Marcelo y su equipo. La solvencia de las compañías que recomiendan es su mayor diferencial.",
-            stars: 5
-        },
-        {
-            name: "Sofía Martínez",
-            role: "Seguro de Vida",
-            content: "Buscaba protección para mis hijos y encontré un equipo que realmente se preocupa por las personas.",
-            stars: 5
-        },
-        {
-            name: "Daniela Rossi",
-            role: "Accidentes Personales",
-            content: "Como monotributista, necesitaba algo ágil para entrar a las obras. Me enviaron el certificado en minutos.",
-            stars: 5
-        },
-        {
-            name: "Ricardo Gómez",
+            name: "Romina G.",
             role: "Seguro de Moto",
-            content: "El mejor precio que conseguí para mi moto y con una cobertura de granizo que otros no me daban.",
+            content: "Aseguré mi moto con ellos. Tuve un desperfecto mecánico en la ruta y me gestionaron la grúa al toque. Vivir tranquila no tiene precio.",
+            stars: 5
+        },
+        {
+            name: "Juan Ignacio Rossi",
+            role: "Cliente Integral",
+            content: "Los recomiendo por la transparencia. Me explicaron letra chica que en otros lados te ocultan. Se nota que saben lo que hacen y cuidan tu bolsillo.",
+            stars: 5
+        },
+        {
+            name: "Laura V.",
+            role: "Seguro de Vida",
+            content: "Súper conformes con el seguro de vida. Nos dieron una charla muy clara a mi y a mi marido, sin vueltas. Muy profesionales y humanos.",
+            stars: 5
+        },
+        {
+            name: "Federico Lopez",
+            role: "Cliente Particular",
+            content: "Tuve un choque donde yo no tuve la culpa y me ayudaron con todo el reclamo de terceros a la otra compañía. Sin su ayuda todavía estaría esperando.",
+            stars: 5
+        },
+        {
+            name: "Silvia N.",
+            role: "Cliente de años",
+            content: "Excelentes personas. Te asesoran con honestidad. Si algo no te conviene, te lo dicen. Eso es difícil de encontrar hoy en día en un productor.",
+            stars: 5
+        },
+        {
+            name: "Estanislao Cortese",
+            role: "Comerciante",
+            content: "Cambié el seguro del negocio con ellos. Me cubrieron cosas que ni sabía que se podían asegurar y a mejor precio. Muy buena predisposición siempre.",
+            stars: 5
+        },
+        {
+            name: "Claudia M.",
+            role: "Cliente Particular",
+            content: "Gestión impecable. Me mandan los cupones de pago y la póliza digital siempre a tiempo por mail y WhatsApp. Cero problemas en 5 años.",
             stars: 5
         }
     ];
@@ -84,7 +84,7 @@ export function Testimonials() {
                         Confianza <span className="text-brand-blue">Confirmada</span>
                     </h2>
                     <p className="text-brand-slate text-lg max-w-2xl mx-auto">
-                        No lo decimos nosotros, lo dicen quienes ya protegen su futuro con Coscia.
+                        No lo decimos nosotros, lo dicen quienes ya protegen su futuro con nosotros.
                     </p>
                 </div>
             </div>

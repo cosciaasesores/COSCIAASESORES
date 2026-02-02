@@ -471,11 +471,15 @@ export function ClaimsReport() {
                                         }`}
                                 >
                                     <option value="">Seleccioná el tipo</option>
-                                    <option value="auto">Seguro de Auto</option>
-                                    <option value="hogar">Seguro de Hogar</option>
-                                    <option value="vida">Seguro de Vida</option>
+                                    <option value="automotor">Automotor</option>
+                                    <option value="motovehiculos">Motovehículos</option>
+                                    <option value="hogar">Hogar</option>
+                                    <option value="embarcaciones">Embarcaciones de Placer</option>
                                     <option value="accidentes">Accidentes Personales</option>
-                                    <option value="empresas">Empresas / ART</option>
+                                    <option value="art">ART</option>
+                                    <option value="comercio">Comercio</option>
+                                    <option value="legal">Asistencia Legal</option>
+                                    <option value="cauciones">Cauciones</option>
                                     <option value="otro">Otro</option>
                                 </select>
                                 {errors.claimType && (
@@ -594,16 +598,16 @@ export function ClaimsReport() {
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-6">
                                 <div className="flex items-center gap-3 text-sm text-gray-700">
-                                    <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-bold shrink-0">1</div>
+                                    <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-bold shrink-0">x1</div>
                                     <span>Frente Registro</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-gray-700">
-                                    <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-bold shrink-0">2</div>
+                                    <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-bold shrink-0">x1</div>
                                     <span>Dorso Registro</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-gray-700">
-                                    <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-bold shrink-0">3</div>
-                                    <span>Frente Cédula Verde</span>
+                                    <div className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-[10px] font-bold shrink-0">x1</div>
+                                    <span>Cédula Verde/Azul</span>
                                 </div>
                                 <div className="flex items-center gap-3 text-sm text-gray-700">
                                     <div className="w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center text-[10px] font-bold shrink-0">x3</div>

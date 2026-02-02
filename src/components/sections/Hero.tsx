@@ -37,7 +37,7 @@ export function Hero() {
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                             className="text-xl md:text-2xl text-brand-silver/80 leading-relaxed max-w-xl font-normal"
                         >
-                            En Coscia Asesores diseñamos el respaldo que tu familia y empresas necesitan para vivir con total libertad.
+                            Contamos con el respaldo que tanto vos, como tu familia y empresa necesitan para vivir con total libertad!
                         </motion.p>
 
                         <motion.div
@@ -46,11 +46,23 @@ export function Hero() {
                             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                             className="flex flex-col sm:flex-row gap-4 pt-4"
                         >
-                            <a href="#contacto" className="px-10 py-5 bg-brand-blue text-white rounded-full font-bold text-xl transition-all hover:bg-white hover:text-brand-blue hover:scale-105 shadow-2xl shadow-brand-blue/20 flex items-center justify-center gap-2">
-                                COTIZAR GRATIS
+                            <a href="#contacto" className="px-10 py-5 bg-brand-blue text-white rounded-full font-bold text-xl transition-all hover:bg-white hover:text-brand-blue hover:scale-105 shadow-2xl shadow-brand-blue/20 flex items-center justify-center gap-2 relative overflow-hidden group">
+                                <span className="relative z-10">COTIZAR GRATIS</span>
+                                {/* Shimmer Effect - ONLY ON DESKTOP */}
+                                <motion.div
+                                    className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent skew-x-12 hidden md:block"
+                                    initial={{ x: "-150%" }}
+                                    animate={{ x: "150%" }}
+                                    transition={{
+                                        duration: 1.5,
+                                        repeat: Infinity,
+                                        repeatDelay: 3,
+                                        ease: "easeInOut",
+                                    }}
+                                />
                             </a>
                             <a href="#servicios" className="px-10 py-5 bg-transparent hover:bg-white/5 border border-white/20 text-white rounded-full font-bold text-xl transition-all hover:scale-105 backdrop-blur-sm flex items-center justify-center">
-                                SERVICIOS
+                                COBERTURAS
                             </a>
                         </motion.div>
                     </div>

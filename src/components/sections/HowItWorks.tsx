@@ -7,18 +7,18 @@ export function HowItWorks() {
     const steps = [
         {
             icon: MessageSquareText,
-            title: "1. Cotizá",
-            desc: "Contanos qué necesitás proteger. Hablá con un asesor real por WhatsApp o form.",
+            title: "Cotizá",
+            desc: "Comentanos qué necesitas proteger. Comunicate con nosotros por WhatsApp o envía tu consulta por form y nos contactamos con vos.",
         },
         {
             icon: FileCheck,
-            title: "2. Elegí tu Plan",
-            desc: "Te presentamos las mejores opciones del mercado comparando precio y cobertura.",
+            title: "Elegí tu Plan",
+            desc: "Buscamos las mejores opciones para tu riesgo, comparando precio y cobertura en las mejores compañías del mercado.",
         },
         {
             icon: Shield,
-            title: "3. Estás Cubierto",
-            desc: "Emitimos tu póliza en el acto. Recibís tu certificado digital y ya estás asegurado.",
+            title: "Estás Cubierto",
+            desc: "Emitimos tu póliza en el acto. Recibís tu póliza de manera digital y ya estás asegurado!",
         },
     ];
 

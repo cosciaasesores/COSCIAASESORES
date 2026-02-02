@@ -6,15 +6,15 @@ import { Users } from "lucide-react";
 export function Team() {
     const owners = [
         {
-            name: "Marcelo Coscia",
-            role: "Socio Fundador",
-            bio: "Más de 30 años de trayectoria garantizando la solvencia y la ética en cada asesoramiento patrimonial.",
-            initials: "MC"
+            name: "Gustavo Juan Coscia",
+            role: "PAS Matricula 52.032",
+            bio: "Socio Fundador con más de 30 años de trayectoria garantizando el profesionalismo y la ética en cada asesoramiento.",
+            initials: "GC"
         },
         {
-            name: "Nahuel Coscia",
-            role: "Director Ejecutivo",
-            bio: "Liderando la transformación digital y la cercanía con el cliente para una experiencia ágil y moderna.",
+            name: "Dr. Nahuel Ignacio Coscia Fernandez",
+            role: "PAS Matricula 93.900",
+            bio: "Director Ejecutivo comprometido con la excelencia administrativa y la satisfacción de nuestros asegurados.",
             initials: "NC"
         }
     ];
@@ -29,7 +29,7 @@ export function Team() {
                         viewport={{ once: true }}
                         className="text-3xl md:text-5xl font-display font-bold text-brand-navy mb-6"
                     >
-                        Quienes Hacen <span className="text-brand-blue">Coscia</span>
+                        Quienes <span className="text-brand-blue">Somos</span>
                     </motion.h2>
                     <p className="text-brand-slate text-lg max-w-2xl mx-auto">
                         Un equipo que combina experiencia y visión de futuro para cuidar lo que más valorás.
