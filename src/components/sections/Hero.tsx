@@ -37,7 +37,7 @@ export function Hero() {
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                             className="text-xl md:text-2xl text-brand-silver/80 leading-relaxed max-w-xl font-normal"
                         >
-                            Contamos con el respaldo que tanto vos, como tu familia y empresa necesitan para vivir con total libertad!
+                            Contamos con el respaldo que tanto vos como tu familia y empresa necesitan para vivir con total libertad!
                         </motion.p>
 
                         <motion.div

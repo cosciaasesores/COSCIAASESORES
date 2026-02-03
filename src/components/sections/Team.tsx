@@ -6,12 +6,12 @@ import { Users } from "lucide-react";
 export function Team() {
     const owners = [
         {
-            name: "Gustavo Juan Coscia",
+            name: "Coscia Gustavo Juan",
             role: "PAS Matricula 52.032",
             initials: "GC"
         },
         {
-            name: "Dr. Nahuel Ignacio Coscia Fernandez",
+            name: "Coscia Fernandez Nahuel Ignacio",
             role: "PAS Matricula 93.900",
             initials: "NC"
         }
