@@ -17,6 +17,7 @@ export async function GET() {
             'galicia-seguros.png': 'GALICIA SEGUROS',
             'La-Segunda-Seguros.png': 'LA SEGUNDA SEGUROS',
             'MERCANTIL ANDINA.png': 'MERCANTIL ANDINA',
+            'METROPOL.png': 'METROPOL',
             'MERIDIONAL.png': 'MERIDIONAL SEGUROS',
             'noble_logo_negro.png': 'NOBLE SEGUROS',
             'PREMIAR.png': 'PREMIAR',
