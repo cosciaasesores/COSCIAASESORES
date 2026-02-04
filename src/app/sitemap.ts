@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://cosciaseguros.com.ar'
+    const baseUrl = 'https://www.cosciaasesores.com'
 
     return [
         {

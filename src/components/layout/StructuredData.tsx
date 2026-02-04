@@ -3,8 +3,8 @@ export function StructuredData() {
         "@context": "https://schema.org",
         "@type": "InsuranceAgency",
         "name": "Coscia Asesores de Seguros",
-        "description": "Asesoramiento experto en seguros patrimoniales, de vida, automotor, hogar y ART en El Palomar y Buenos Aires",
-        "url": "https://cosciaseguros.com.ar",
+        "description": "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
+        "url": "https://www.cosciaasesores.com",
         "telephone": "+54 11 5827-6780",
         "email": "cosciaasesores@gmail.com",
         "address": {

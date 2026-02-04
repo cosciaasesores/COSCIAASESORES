@@ -7,9 +7,9 @@ import { ClientLayout } from "@/components/layout/ClientLayout";
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cosciaseguros.vercel.app'),
-  title: "Coscia Asesores | Seguros en El Palomar y CABA - Cotización Gratis",
-  description: "✅ Asesoría en Seguros en El Palomar y CABA ⚡ Cotizá gratis tu seguro de auto, hogar, vida y ART. Trabajamos con +20 aseguradoras líderes. ¡Atención personalizada 24/7!",
+  metadataBase: new URL('https://www.cosciaasesores.com'),
+  title: "Coscia Asesores | Seguros - Cotización Gratis",
+  description: "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
   keywords: ["seguros el palomar", "asesor de seguros", "seguro automotor", "seguro de vida", "ART", "seguros Buenos Aires", "cotización gratis", "broker seguros"],
   authors: [{ name: "Coscia Asesores" }],
   creator: "Coscia Asesores",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     apple: "/logo-coscia.png",
   },
   openGraph: {
-    title: "Coscia Asesores | Seguros en El Palomar - Cotización Gratis",
-    description: "Cotizá gratis tu seguro de auto, hogar, vida y ART. +20 aseguradoras líderes. Atención personalizada 24/7 en El Palomar y CABA.",
-    url: "https://cosciaseguros.vercel.app",
+    title: "Coscia Asesores | Seguros - Cotización Gratis",
+    description: "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
+    url: "https://www.cosciaasesores.com",
     siteName: "Coscia Asesores",
     images: [
       {
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://cosciaseguros.vercel.app",
+    canonical: "https://www.cosciaasesores.com",
   },
 };
 

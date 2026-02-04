@@ -7,11 +7,30 @@ export async function GET() {
         const companiesDir = path.join(process.cwd(), 'public', 'companies');
         const files = fs.readdirSync(companiesDir);
 
-        // Filter for image files and map to their public paths
+        // Exact mapping requested by the user
+        const nameMapping: Record<string, string> = {
+            'ALLIANZ.png': 'ALLIANZ',
+            'BARBUSS.png': 'BARBUSS',
+            'experta-seguros-logo.png': 'EXPERTA',
+            'federacionpatronal-compania-de-seguros.png': 'FEDERACION PATRONAL',
+            'Fed-Patronal-2024.png': 'FEDERACION PATRONAL ART',
+            'galicia-seguros.png': 'GALICIA SEGUROS',
+            'La-Segunda-Seguros.png': 'LA SEGUNDA SEGUROS',
+            'MERCANTIL ANDINA.png': 'MERCANTIL ANDINA',
+            'MERIDIONAL.png': 'MERIDIONAL SEGUROS',
+            'noble_logo_negro.png': 'NOBLE SEGUROS',
+            'PREMIAR.png': 'PREMIAR',
+            'Logo-Prevencion-ART.png': 'PREVENCION ART',
+            'logo-provincia.png': 'PROVINCIA SEGUROS',
+            'prov art.png': 'PROVINCIA ART',
+            'SANCOR SEGUROS.png': 'SANCOR SEGUROS',
+        };
+
+        // Filter and map logos
         const logos = files
-            .filter(file => /\.(png|jpe?g|svg|webp)$/i.test(file))
+            .filter(file => nameMapping[file])
             .map(file => ({
-                name: file.replace(/(_logo)?\.[^.]+$/, '').replace(/[_-]/g, ' '),
+                name: nameMapping[file],
                 logo: `/companies/${file}`
             }));
 

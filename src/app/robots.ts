@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/api/', '/admin/'],
             },
         ],
-        sitemap: 'https://cosciaseguros.com.ar/sitemap.xml',
+        sitemap: 'https://www.cosciaasesores.com/sitemap.xml',
     }
 }

@@ -238,15 +238,15 @@ export function ContactForm() {
                                 }`}
                         >
                             <option value="">Seleccionar opción</option>
-                            <option value="automotor">Seguro Automotor</option>
-                            <option value="motovehiculo">Seguro Motovehículo</option>
-                            <option value="hogar">Seguro Hogar</option>
-                            <option value="vida">Seguro de Vida</option>
                             <option value="accidentes">Accidentes Personales</option>
-                            <option value="art">Seguros para ART</option>
-                            <option value="comercios">Seguros para Comercios</option>
-                            <option value="legales">Seguro de Legales</option>
-                            <option value="cauciones">Seguro de Cauciones</option>
+                            <option value="art">ART</option>
+                            <option value="automotor">Automotor</option>
+                            <option value="cauciones">Cauciones</option>
+                            <option value="comercios">Comercio</option>
+                            <option value="embarcaciones">Embarcaciones de Placer</option>
+                            <option value="hogar">Hogar</option>
+                            <option value="motovehiculo">Motovehículo</option>
+                            <option value="vida">Vida</option>
                             <option value="otro">Otro</option>
                         </select>
                         <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-slate pointer-events-none" />

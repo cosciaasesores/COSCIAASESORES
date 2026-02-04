@@ -27,15 +27,16 @@ export function ServiceCard({
 }: ServiceCardProps) {
     // Map title to form value if not provided
     const getServiceValue = () => {
-        if (title.includes("Automotor")) return "automotor";
-        if (title.includes("Motovehiculo")) return "motovehiculo";
-        if (title.includes("Hogar")) return "hogar";
-        if (title.includes("Vida")) return "vida";
-        if (title.includes("accidentes")) return "accidentes";
-        if (title.includes("ART")) return "art";
-        if (title.includes("comercios")) return "comercios";
-        if (title.includes("legales")) return "legales";
-        if (title.includes("cauciones")) return "cauciones";
+        const t = title.toLowerCase();
+        if (t.includes("automotor")) return "automotor";
+        if (t.includes("motovehiculo") || t.includes("motovehículo")) return "motovehiculo";
+        if (t.includes("hogar")) return "hogar";
+        if (t.includes("vida")) return "vida";
+        if (t.includes("accidentes")) return "accidentes";
+        if (t.includes("art")) return "art";
+        if (t.includes("comercio")) return "comercios";
+        if (t.includes("embarcaciones")) return "embarcaciones";
+        if (t.includes("cauciones")) return "cauciones";
         return "otro";
     };
 

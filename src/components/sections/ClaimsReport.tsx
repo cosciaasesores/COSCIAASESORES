@@ -115,7 +115,10 @@ export function ClaimsReport() {
                 const response = await fetch('/api/companies');
                 const data = await response.json();
                 if (Array.isArray(data)) {
-                    setCompaniesList(data);
+                    const sortedCompanies = [...data].sort((a, b) =>
+                        a.name.localeCompare(b.name)
+                    );
+                    setCompaniesList(sortedCompanies);
                 }
             } catch (error) {
                 console.error("Error fetching companies:", error);
@@ -528,15 +531,15 @@ export function ClaimsReport() {
                                         }`}
                                 >
                                     <option value="">Seleccioná el tipo</option>
-                                    <option value="automotor">Automotor</option>
-                                    <option value="motovehiculos">Motovehículos</option>
-                                    <option value="hogar">Hogar</option>
-                                    <option value="embarcaciones">Embarcaciones de Placer</option>
                                     <option value="accidentes">Accidentes Personales</option>
                                     <option value="art">ART</option>
-                                    <option value="comercio">Comercio</option>
-                                    <option value="legal">Asistencia Legal</option>
+                                    <option value="automotor">Automotor</option>
                                     <option value="cauciones">Cauciones</option>
+                                    <option value="comercio">Comercio</option>
+                                    <option value="embarcaciones">Embarcaciones de Placer</option>
+                                    <option value="hogar">Hogar</option>
+                                    <option value="motovehiculos">Motovehículos</option>
+                                    <option value="vida">Vida</option>
                                     <option value="otro">Otro</option>
                                 </select>
                                 {errors.claimType && (

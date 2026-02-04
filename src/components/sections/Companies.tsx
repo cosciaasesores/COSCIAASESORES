@@ -20,7 +20,10 @@ export function Companies() {
                 const response = await fetch('/api/companies');
                 const data = await response.json();
                 if (Array.isArray(data)) {
-                    setCompanies(data);
+                    const sortedCompanies = [...data].sort((a, b) =>
+                        a.name.localeCompare(b.name)
+                    );
+                    setCompanies(sortedCompanies);
                 }
             } catch (error) {
                 console.error("Error fetching logos:", error);
