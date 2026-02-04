@@ -11,7 +11,7 @@ export function Team() {
             initials: "GC"
         },
         {
-            name: "Coscia Fernandez Nahuel Ignacio",
+            name: "Dr. Coscia Fernandez Nahuel Ignacio",
             role: "PAS Matricula 93.900",
             initials: "NC"
         }
