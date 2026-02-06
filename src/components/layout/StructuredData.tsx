@@ -70,8 +70,8 @@ export function StructuredData() {
             },
             {
                 "@type": "Service",
-                "name": "Seguro de Vida",
-                "description": "Resguardo financiero para tu familia",
+                "name": "Asistencia Legal",
+                "description": "Asistencia ante reclamos de terceros en compañías colegas por accidentes de tránsito",
                 "provider": {
                     "@type": "InsuranceAgency",
                     "name": "Coscia Asesores"

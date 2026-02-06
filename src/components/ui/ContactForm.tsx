@@ -246,7 +246,6 @@ export function ContactForm() {
                             <option value="embarcaciones">Embarcaciones de Placer</option>
                             <option value="hogar">Hogar</option>
                             <option value="motovehiculo">Motovehículo</option>
-                            <option value="vida">Vida</option>
                             <option value="otro">Otro</option>
                         </select>
                         <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-slate pointer-events-none" />

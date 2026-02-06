@@ -539,7 +539,6 @@ export function ClaimsReport() {
                                     <option value="embarcaciones">Embarcaciones de Placer</option>
                                     <option value="hogar">Hogar</option>
                                     <option value="motovehiculos">Motovehículos</option>
-                                    <option value="vida">Vida</option>
                                     <option value="otro">Otro</option>
                                 </select>
                                 {errors.claimType && (

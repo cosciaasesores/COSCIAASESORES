@@ -1,6 +1,6 @@
 "use client";
 
-import { Car, Home, Ship, UserCheck, Briefcase, Bike, HardHat, Store, Heart, FileCheck } from "lucide-react";
+import { Car, Home, Ship, UserCheck, Briefcase, Bike, HardHat, Store, Gavel, FileCheck } from "lucide-react";
 import { ServiceCard } from "../ui/ServiceCard";
 import { ResilientContainer } from "../ui/ResilientContainer";
 
@@ -62,12 +62,12 @@ const services = [
         image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop",
     },
     {
-        title: "Vida",
-        description: "Protección y respaldo económico para tu familia, garantizando su tranquilidad y bienestar ante cualquier imprevisto.",
-        icon: Heart,
-        color: "bg-rose-500/10",
-        textColor: "text-rose-500",
-        image: "https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=800&auto=format&fit=crop",
+        title: "Asistencia Legal",
+        description: "Brindamos asistencia ante reclamos de terceros en compañías colegas por accidentes de tránsito, para que no lo tengas que hacer vos!",
+        icon: Gavel,
+        color: "bg-amber-600/10",
+        textColor: "text-amber-600",
+        image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
     },
     {
         title: "Cauciones",

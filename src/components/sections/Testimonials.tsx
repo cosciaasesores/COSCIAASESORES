@@ -37,8 +37,8 @@ export function Testimonials() {
         },
         {
             name: "Laura V.",
-            role: "Seguro de Vida",
-            content: "Súper conformes con el seguro de vida. Nos dieron una charla muy clara a mi y a mi marido, sin vueltas. Muy profesionales y humanos.",
+            role: "Asesoría Integral",
+            content: "Súper conformes con el asesoramiento. Nos dieron una charla muy clara a mi y a mi marido, sin vueltas. Muy profesionales y humanos.",
             stars: 5
         },
         {
