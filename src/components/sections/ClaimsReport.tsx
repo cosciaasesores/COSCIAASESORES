@@ -5,12 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Upload, X, AlertCircle, CheckCircle2, Loader2, Camera, FileText, ChevronDown, Plus, Minus } from "lucide-react";
 import imageCompression from "browser-image-compression";
 import Image from "next/image";
+import JSZip from "jszip";
 
 interface ClaimImage {
     id: string;
     file: File;
     preview: string;
     compressed?: Blob;
+    isProcessing: boolean;
 }
 
 export function ClaimsReport() {
@@ -158,8 +160,8 @@ export function ClaimsReport() {
 
     const compressImage = async (file: File): Promise<Blob> => {
         const options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 1920,
+            maxSizeMB: 0.3, // Reducido para asegurar que 10 fotos entren en el límite de Vercel (4.5MB)
+            maxWidthOrHeight: 1280, // Reducido para mayor velocidad y menor peso
             useWebWorker: true,
             fileType: 'image/jpeg'
         };
@@ -175,24 +177,39 @@ export function ClaimsReport() {
     const handleImageSelect = async (files: FileList | null) => {
         if (!files) return;
 
-        const newImages: ClaimImage[] = [];
         const remainingSlots = MAX_IMAGES - images.length;
+        const selectedFiles = Array.from(files)
+            .filter(file => ACCEPTED_TYPES.includes(file.type))
+            .slice(0, remainingSlots);
 
-        for (let i = 0; i < Math.min(files.length, remainingSlots); i++) {
-            const file = files[i];
+        // 1. Agregar a la UI inmediatamente con el preview original
+        const placeholderImages: ClaimImage[] = selectedFiles.map(file => ({
+            id: Math.random().toString(36).substr(2, 9),
+            file,
+            preview: URL.createObjectURL(file),
+            isProcessing: true
+        }));
 
-            if (!ACCEPTED_TYPES.includes(file.type)) {
-                continue;
+        setImages(prev => [...prev, ...placeholderImages]);
+
+        // 2. Procesar en segundo plano para no congelar la UI
+        for (const placeholder of placeholderImages) {
+            try {
+                const compressed = await compressImage(placeholder.file);
+                setImages(prev => prev.map(img =>
+                    img.id === placeholder.id
+                        ? { ...img, compressed, isProcessing: false }
+                        : img
+                ));
+            } catch (error) {
+                console.error("Error al procesar imagen:", error);
+                setImages(prev => prev.map(img =>
+                    img.id === placeholder.id
+                        ? { ...img, isProcessing: false }
+                        : img
+                ));
             }
-
-            const id = Math.random().toString(36).substr(2, 9);
-            const preview = URL.createObjectURL(file);
-            const compressed = await compressImage(file);
-
-            newImages.push({ id, file, preview, compressed });
         }
-
-        setImages(prev => [...prev, ...newImages]);
     };
 
     const removeImage = (id: string) => {
@@ -247,19 +264,24 @@ export function ClaimsReport() {
         setStatus("loading");
 
         try {
-            // Convertir imágenes a base64
-            const imagePromises = images.map(async (img) => {
-                const blob = img.compressed || img.file;
-                const buffer = await blob.arrayBuffer();
-                const base64 = Buffer.from(buffer).toString('base64');
-                return {
-                    filename: img.file.name,
-                    content: base64,
-                    type: 'image/jpeg'
-                };
+            // Crear ZIP con las imágenes
+            const zip = new JSZip();
+            images.forEach((img, index) => {
+                const fileData = img.compressed || img.file;
+                // Usar un nombre descriptivo para cada archivo dentro del zip
+                const extension = img.file.name.split('.').pop() || 'jpg';
+                zip.file(`foto-${index + 1}.${extension}`, fileData);
             });
 
-            const imageAttachments = await Promise.all(imagePromises);
+            const zipBlob = await zip.generateAsync({ type: "blob" });
+            const buffer = await zipBlob.arrayBuffer();
+            const base64Zip = Buffer.from(buffer).toString('base64');
+
+            const attachments = [{
+                filename: `fotos_siniestro_${formData.name.replace(/\s+/g, '_')}.zip`,
+                content: base64Zip,
+                type: 'application/zip'
+            }];
 
             // Enviar al API
             const response = await fetch('/api/send-claim', {
@@ -267,7 +289,7 @@ export function ClaimsReport() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     ...formData,
-                    images: imageAttachments
+                    images: attachments
                 })
             });
 
@@ -724,8 +746,14 @@ export function ClaimsReport() {
                                             width={300}
                                             height={200}
                                             unoptimized
-                                            className="w-full h-32 object-cover rounded-xl border-2 border-gray-200"
+                                            className={`w-full h-32 object-cover rounded-xl border-2 transition-opacity ${image.isProcessing ? 'opacity-40 border-orange-200' : 'opacity-100 border-gray-200'}`}
                                         />
+                                        {image.isProcessing && (
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/5 rounded-xl">
+                                                <Loader2 className="w-6 h-6 text-orange-600 animate-spin" />
+                                                <span className="text-[10px] font-bold text-orange-700 mt-1 uppercase">Procesando</span>
+                                            </div>
+                                        )}
                                         <button
                                             type="button"
                                             onClick={() => removeImage(image.id)}
@@ -750,7 +778,7 @@ export function ClaimsReport() {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        disabled={status === 'loading' || !isFormValid()}
+                        disabled={status === 'loading' || !isFormValid() || images.some(img => img.isProcessing)}
                         className="w-full bg-red-600 hover:bg-red-700 text-white py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                     >
                         {status === 'loading' ? (
