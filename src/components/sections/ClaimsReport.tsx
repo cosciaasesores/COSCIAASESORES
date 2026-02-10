@@ -146,7 +146,8 @@ export function ClaimsReport() {
             formData.date !== "" &&
             formData.time !== "" &&
             formData.location.trim() !== "" &&
-            formData.description.trim() !== ""
+            formData.description.trim() !== "" &&
+            images.length >= 2
         );
     };
 
@@ -182,11 +183,12 @@ export function ClaimsReport() {
             .filter(file => ACCEPTED_TYPES.includes(file.type))
             .slice(0, remainingSlots);
 
-        // 1. Agregar a la UI inmediatamente con el preview original
+        // 1. Agregar a la UI inmediatamente pero SIN la URL del objeto todavía
+        // Esto evita que el navegador intente cargar 10 imágenes pesadas a la vez
         const placeholderImages: ClaimImage[] = selectedFiles.map(file => ({
             id: Math.random().toString(36).substr(2, 9),
             file,
-            preview: URL.createObjectURL(file),
+            preview: "", // No generamos el preview pesado todavía
             isProcessing: true
         }));
 
@@ -195,17 +197,23 @@ export function ClaimsReport() {
         // 2. Procesar en segundo plano para no congelar la UI
         for (const placeholder of placeholderImages) {
             try {
+                // Comprimimos antes de generar cualquier preview
                 const compressed = await compressImage(placeholder.file);
+                // Ahora que es liviana (300KB), generamos la URL de previsualización
+                const compressedPreview = URL.createObjectURL(compressed);
+
                 setImages(prev => prev.map(img =>
                     img.id === placeholder.id
-                        ? { ...img, compressed, isProcessing: false }
+                        ? { ...img, compressed, preview: compressedPreview, isProcessing: false }
                         : img
                 ));
             } catch (error) {
                 console.error("Error al procesar imagen:", error);
+                // Si falla, intentamos usar el original pero podría ser pesado
+                const fallbackPreview = URL.createObjectURL(placeholder.file);
                 setImages(prev => prev.map(img =>
                     img.id === placeholder.id
-                        ? { ...img, isProcessing: false }
+                        ? { ...img, preview: fallbackPreview, isProcessing: false }
                         : img
                 ));
             }
@@ -247,7 +255,8 @@ export function ClaimsReport() {
             date: formData.date === "",
             time: formData.time === "",
             location: formData.location.trim() === "",
-            description: formData.description.trim() === ""
+            description: formData.description.trim() === "",
+            images: images.length < 2
         };
 
         setErrors(newErrors);
@@ -670,7 +679,7 @@ export function ClaimsReport() {
                     <div className="mb-10">
                         <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center gap-2">
                             <Camera className="w-5 h-5 text-red-600" />
-                            Fotos del Siniestro
+                            Fotos del Siniestro * <span className="text-sm font-normal text-gray-500">(Mínimo 2 son obligatorias)</span>
                         </h3>
                         <p className="text-sm text-gray-600 mb-6">
                             Podés subir hasta {MAX_IMAGES} fotos.
@@ -712,17 +721,17 @@ export function ClaimsReport() {
                             onDragLeave={handleDragLeave}
                             onDrop={handleDrop}
                             onClick={() => fileInputRef.current?.click()}
-                            className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${isDragging
+                            className={`border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${errors.images
                                 ? 'border-red-500 bg-red-50'
                                 : 'border-gray-300 hover:border-red-400 hover:bg-gray-50'
                                 } ${images.length >= MAX_IMAGES ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                            <Upload className={`w-12 h-12 mx-auto mb-4 ${isDragging ? 'text-red-500' : 'text-gray-400'}`} />
+                            <Upload className={`w-12 h-12 mx-auto mb-4 ${isDragging || errors.images ? 'text-red-500' : 'text-gray-400'}`} />
                             <p className="text-gray-700 font-semibold mb-2">
                                 Arrastrá las fotos acá o hacé click para seleccionar
                             </p>
                             <p className="text-sm text-gray-500">
-                                JPG, PNG, HEIC - Máximo {MAX_IMAGES} fotos
+                                JPG, PNG, HEIC - Mínimo 2, Máximo {MAX_IMAGES} fotos
                             </p>
                             <input
                                 ref={fileInputRef}
@@ -735,29 +744,42 @@ export function ClaimsReport() {
                             />
                         </div>
 
+                        {errors.images && (
+                            <p className="text-red-500 text-sm mt-3 flex items-center justify-center gap-1 font-bold">
+                                <AlertCircle className="w-4 h-4" />
+                                Por favor, subí al menos 2 fotos del siniestro
+                            </p>
+                        )}
+
                         {/* Image Previews */}
                         {images.length > 0 && (
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
                                 {images.map((image) => (
                                     <div key={image.id} className="relative group">
-                                        <Image
-                                            src={image.preview}
-                                            alt="Preview"
-                                            width={300}
-                                            height={200}
-                                            unoptimized
-                                            className={`w-full h-32 object-cover rounded-xl border-2 transition-opacity ${image.isProcessing ? 'opacity-40 border-orange-200' : 'opacity-100 border-gray-200'}`}
-                                        />
+                                        {image.preview ? (
+                                            <Image
+                                                src={image.preview}
+                                                alt="Preview"
+                                                width={300}
+                                                height={200}
+                                                unoptimized
+                                                className={`w-full h-32 object-cover rounded-xl border-2 transition-opacity ${image.isProcessing ? 'opacity-40 border-orange-200' : 'opacity-100 border-gray-200'}`}
+                                            />
+                                        ) : (
+                                            <div className="w-full h-32 bg-slate-50 border-2 border-dashed border-slate-200 rounded-xl flex items-center justify-center">
+                                                <Camera className="w-8 h-8 text-slate-300" />
+                                            </div>
+                                        )}
                                         {image.isProcessing && (
-                                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/5 rounded-xl">
-                                                <Loader2 className="w-6 h-6 text-orange-600 animate-spin" />
-                                                <span className="text-[10px] font-bold text-orange-700 mt-1 uppercase">Procesando</span>
+                                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/60 backdrop-blur-[1px] rounded-xl z-10">
+                                                <Loader2 className="w-6 h-6 text-red-600 animate-spin" />
+                                                <span className="text-[10px] font-black text-red-700 mt-2 uppercase tracking-tighter">Optimizando</span>
                                             </div>
                                         )}
                                         <button
                                             type="button"
                                             onClick={() => removeImage(image.id)}
-                                            className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-opacity z-10"
+                                            className="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full shadow-lg md:opacity-0 md:group-hover:opacity-100 transition-opacity z-20"
                                         >
                                             <X className="w-4 h-4" />
                                         </button>
