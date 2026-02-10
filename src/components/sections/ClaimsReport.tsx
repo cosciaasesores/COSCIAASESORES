@@ -107,7 +107,12 @@ export function ClaimsReport() {
     const [errors, setErrors] = useState<Record<string, boolean>>({});
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [isDragging, setIsDragging] = useState(false);
+    const [maxDate, setMaxDate] = useState("");
     const fileInputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        setMaxDate(new Date().toISOString().split('T')[0]);
+    }, []);
 
     useEffect(() => {
         const fetchCompanies = async () => {
@@ -557,7 +562,7 @@ export function ClaimsReport() {
                                     type="date"
                                     value={formData.date}
                                     onChange={(e) => handleInputChange('date', e.target.value)}
-                                    max={new Date().toISOString().split('T')[0]}
+                                    max={maxDate}
                                     lang="es-AR"
                                     className={`w-full px-4 py-3 border rounded-xl focus:ring-2 outline-none transition-all text-gray-900 ${errors.date
                                         ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
