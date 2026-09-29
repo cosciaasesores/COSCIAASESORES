@@ -1,19 +1,90 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Shield } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, MessageCircle, Clock } from "lucide-react";
 import Image from "next/image";
+import { ADDRESS, BUSINESS_HOURS, EMAIL, MAPS_URL, SOCIAL, WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/site";
+import { TrackedLink } from "@/components/ui/TrackedLink";
+
+const footerLinks = [
+    { name: "Compañías", href: "/#socios" },
+    { name: "Coberturas", href: "/#servicios" },
+    { name: "Reseñas", href: "/#resenas" },
+    { name: "Nosotros", href: "/#nosotros" },
+    { name: "Preguntas frecuentes", href: "/#faq" },
+    { name: "Reportar siniestro", href: "/siniestros" },
+];
 
 export function Footer() {
     return (
         <footer className="relative font-sans">
-            {/* Simple Footer Section */}
-            <div className="bg-brand-navy text-white py-8 border-t border-white/5">
-                <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
-                    <p className="text-brand-silver/40 text-xs">
+            {/* Main Footer */}
+            <div className="bg-brand-navy text-white pt-14 pb-10 border-t border-white/5">
+                <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                    <div>
+                        <div className="text-xl font-black tracking-tighter uppercase leading-none mb-3">
+                            Coscia Asesores
+                            <span className="block text-brand-cyan text-[10px] tracking-widest font-medium mt-1">Productores de Seguros</span>
+                        </div>
+                        <p className="text-brand-slate text-sm leading-relaxed max-w-xs">
+                            Asesoramiento profesional en seguros para familias y empresas, con más de 25 años de trayectoria.
+                        </p>
+                        <div className="flex gap-3 mt-5">
+                            <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue transition-colors">
+                                <Instagram className="w-4 h-4" />
+                            </a>
+                            <a href={SOCIAL.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-blue transition-colors">
+                                <Facebook className="w-4 h-4" />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 className="text-sm font-bold text-white mb-4">Contacto</h3>
+                        <ul className="space-y-3 text-sm text-brand-slate">
+                            <li>
+                                <TrackedLink href={whatsappUrl()} channel="whatsapp" location="footer" className="flex items-center gap-2 hover:text-white transition-colors">
+                                    <MessageCircle className="w-4 h-4 text-brand-cyan shrink-0" />
+                                    {WHATSAPP_DISPLAY}
+                                </TrackedLink>
+                            </li>
+                            <li>
+                                <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 hover:text-white transition-colors break-all">
+                                    <Mail className="w-4 h-4 text-brand-cyan shrink-0" />
+                                    {EMAIL}
+                                </a>
+                            </li>
+                            <li>
+                                <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="flex items-start gap-2 hover:text-white transition-colors">
+                                    <MapPin className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" />
+                                    {ADDRESS}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="text-sm font-bold text-white mb-4">Horario de atención</h3>
+                        <p className="flex items-start gap-2 text-sm text-brand-slate">
+                            <Clock className="w-4 h-4 text-brand-cyan shrink-0 mt-0.5" />
+                            <span>{BUSINESS_HOURS}<br />Presencial con cita previa. Urgencias online.</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 className="text-sm font-bold text-white mb-4">Secciones</h3>
+                        <ul className="space-y-2 text-sm text-brand-slate">
+                            {footerLinks.map((link) => (
+                                <li key={link.href}>
+                                    <a href={link.href} className="hover:text-white transition-colors">{link.name}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                <div className="container mx-auto px-6 mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-3 text-center md:text-left">
+                    <p className="text-brand-silver/50 text-xs">
                         © {new Date().getFullYear()} Coscia Asesores de Seguros. Todos los derechos reservados.
                     </p>
-                    <p className="text-brand-silver/40 text-xs">
+                    <p className="text-brand-silver/50 text-xs">
                         Productor Asesor de Seguros inscripto en la SSN.
                     </p>
                 </div>
@@ -58,6 +129,7 @@ export function Footer() {
                                 src="/SSN_Argentina_logo.png"
                                 alt="SSN - Superintendencia de Seguros de la Nación"
                                 fill
+                                sizes="240px"
                                 className="object-contain"
                             />
                         </div>

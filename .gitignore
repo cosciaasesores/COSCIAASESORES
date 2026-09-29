@@ -42,3 +42,8 @@ next-env.d.ts
 
 # agent context
 .agent
+# generados por `next dev` (Next.js 16.3+)
+AGENTS.md
+CLAUDE.md
+# specs de trabajo (OpenSpec)
+openspec/

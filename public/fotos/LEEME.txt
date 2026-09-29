@@ -1,0 +1,17 @@
+CARPETA DE FOTOS DEL SITIO
+==========================
+
+Poné acá las fotos con estos nombres exactos (sin importar mayúsculas).
+Formatos aceptados: .jpg, .jpeg, .png o .webp
+
+  gustavo   -> Foto de Gustavo (sección Nosotros). Cuadrada o vertical, cara centrada.
+  nahuel    -> Foto de Nahuel (sección Nosotros). Cuadrada o vertical, cara centrada.
+  inicio    -> Foto grande del inicio (ustedes o la oficina). Horizontal.
+
+Ejemplos válidos: gustavo.jpg, Nahuel.png, inicio.webp
+
+- Si una foto no está, el sitio muestra lo de siempre (iniciales o la foto actual).
+- No hace falta achicarlas: el sitio las optimiza solo. Mejor si pesan menos de 5 MB.
+- Para reemplazar una foto, pisá el archivo con el mismo nombre.
+- En la compu (npm run dev) se ve al recargar la página.
+  En el sitio publicado se ve después del próximo deploy.

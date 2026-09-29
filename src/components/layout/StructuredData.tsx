@@ -1,3 +1,6 @@
+import { faqs, faqAnswerText } from "@/data/faq";
+import { EMAIL, SOCIAL } from "@/lib/site";
+
 export function StructuredData() {
     const localBusinessSchema = {
         "@context": "https://schema.org",
@@ -6,7 +9,7 @@ export function StructuredData() {
         "description": "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
         "url": "https://www.cosciaasesores.com",
         "telephone": "+54 11 5827-6780",
-        "email": "cosciaasesores@gmail.com",
+        "email": EMAIL,
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Año 1852 Nº 8",
@@ -39,11 +42,8 @@ export function StructuredData() {
             }
         ],
         "priceRange": "$$",
-        "openingHours": "Mo-Fr 09:00-18:00",
-        "sameAs": [
-            "https://www.facebook.com/cosciaseguros",
-            "https://www.instagram.com/cosciaseguros"
-        ]
+        "openingHours": "Mo-Fr 09:00-17:00",
+        "sameAs": [SOCIAL.facebook, SOCIAL.instagram]
     };
 
     const servicesSchema = {
@@ -89,51 +89,18 @@ export function StructuredData() {
         ]
     };
 
+    // Generado desde la misma fuente que la sección FAQ visible.
     const faqSchema = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "¿Es gratis el asesoramiento?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sí, nuestro asesoramiento es completamente gratuito. No cobramos por cotizaciones ni consultas. Trabajamos con comisiones de las aseguradoras, por lo que el precio es el mismo que si contrataras directo."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "¿Cuánto tarda la cotización?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "En menos de 2 minutos recibís tu cotización. Comparamos automáticamente entre más de 20 aseguradoras para encontrar la mejor opción para vos."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "¿Puedo cambiar de aseguradora en cualquier momento?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Sí, podés cambiar cuando quieras. Te ayudamos con todo el proceso de cambio sin costos adicionales."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "¿Qué pasa si tengo un siniestro?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Te acompañamos en todo el proceso. Podés reportar el siniestro directamente en nuestra web 24/7 y un asesor se comunica inmediatamente para guiarte en cada paso."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "¿Con qué aseguradoras trabajan?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Trabajamos con más de 20 aseguradoras líderes del mercado argentino, incluyendo Federación Patronal, Sancor, La Caja, Allianz, Zurich, Mapfre, y muchas más."
-                }
+        "mainEntity": faqs.map((item) => ({
+            "@type": "Question",
+            "name": item.q,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faqAnswerText(item.a)
             }
-        ]
+        }))
     };
 
     return (

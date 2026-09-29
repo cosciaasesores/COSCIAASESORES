@@ -13,7 +13,9 @@
   --color-brand-silver: #e2e8f0;
   /* Light Text */
   --color-brand-slate: #94a3b8;
-  /* Muted Text */
+  /* Muted Text (only on dark backgrounds) */
+  --color-brand-body: #475569;
+  /* Body text on light backgrounds (contrast >= 4.5:1) */
   --color-brand-white: #ffffff;
 
   --font-display: "Outfit", sans-serif;
@@ -87,6 +89,36 @@ h6 {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/*
+ * Componente Marquee: se mueve solo en todos los tamaños.
+ * Usa !important para ganarle a la regla de mobile que apaga todas las animaciones.
+ * Se pausa con hover, foco o al tocarlo (mobile).
+ */
+.marquee .marquee-track {
+  animation: marquee var(--marquee-duration, 40s) linear infinite !important;
+  animation-duration: var(--marquee-duration, 40s) !important;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track,
+.marquee:active .marquee-track {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto !important;
+  }
+
+  .marquee .marquee-track {
+    animation: none !important;
+  }
+
+  .marquee-dup {
+    display: none !important;
+  }
 }
 
 /* Utilities - Glass on Dark */

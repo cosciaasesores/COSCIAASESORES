@@ -85,7 +85,7 @@ export function ContactForm() {
                     });
                 }
                 if (typeof window !== "undefined" && typeof (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq === "function") {
-                    ((window as unknown as { fbq: (...args: unknown[]) => void }).fbq)("track", "Lead", { email: formData.email });
+                    ((window as unknown as { fbq: (...args: unknown[]) => void }).fbq)("track", "Lead");
                 }
                 setStatus("success");
                 setFormData({ name: "", email: "", phone: "", message: "" });
@@ -309,7 +309,7 @@ export function ContactForm() {
             <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full bg-brand-blue hover:bg-brand-cyan text-white py-5 rounded-xl font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-colors disabled:opacity-50 shadow-lg shadow-brand-blue/20"
+                className="w-full bg-brand-blue hover:bg-brand-cyan text-white py-5 rounded-xl font-bold text-lg flex items-center justify-center gap-3 transition-colors disabled:opacity-50 shadow-lg shadow-brand-blue/20"
             >
                 {status === 'loading' ? (
                     <span className="flex items-center gap-2">

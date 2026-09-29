@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     siteName: "Coscia Asesores",
     images: [
       {
-        url: "/logoCoscia.png",
-        width: 800,
-        height: 600,
+        url: "/logoCoscia-512.png",
+        width: 512,
+        height: 481,
         alt: "Coscia Asesores Banner",
       },
     ],

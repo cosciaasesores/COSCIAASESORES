@@ -114,6 +114,8 @@ export function ClaimsReport() {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     useEffect(() => {
+        // Se calcula en el cliente para evitar diferencias de hidratación con la fecha del servidor.
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setMaxDate(new Date().toISOString().split('T')[0]);
     }, []);
 

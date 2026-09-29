@@ -1,6 +1,6 @@
 "use client";
 
-import { Car, Home, Ship, UserCheck, Briefcase, Bike, HardHat, Store, Gavel, FileCheck } from "lucide-react";
+import { Car, Home, Ship, UserCheck, Bike, HardHat, Store, Gavel, FileCheck } from "lucide-react";
 import { ServiceCard } from "../ui/ServiceCard";
 import { ResilientContainer } from "../ui/ResilientContainer";
 
@@ -81,11 +81,11 @@ const services = [
 
 export function Services() {
     return (
-        <section id="servicios" className="py-section bg-slate-50">
+        <section id="servicios" className="py-16 md:py-24 bg-slate-100/60 scroll-mt-24">
             <div className="container mx-auto px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
+                <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold mb-6">Nuestras Coberturas</h2>
-                    <p className="text-brand-slate text-lg">
+                    <p className="text-brand-body text-lg">
                         Ofrecemos una amplia gama de coberturas diseñadas para adaptarse a cada necesidad específica, brindando la protección que buscas en cada momento.
                     </p>
                 </div>
@@ -95,7 +95,7 @@ export function Services() {
                     isEmpty={services.length === 0}
                     emptyMessage="No hay servicios disponibles en este momento."
                 >
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
                         {services.map((service, index) => (
                             <ServiceCard key={index} {...service} index={index} />
                         ))}

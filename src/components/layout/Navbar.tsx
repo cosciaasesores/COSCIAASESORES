@@ -5,12 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-/* eslint-disable @next/next/no-img-element */
+import { QUOTER_URL } from "@/lib/site";
+import { TrackedLink } from "@/components/ui/TrackedLink";
 
 const navLinks = [
+    // Mismo orden que las secciones de la home (src/app/page.tsx).
     { name: "Inicio", href: "#inicio" },
-    { name: "Coberturas", href: "#servicios" },
     { name: "Compañías", href: "#socios" },
+    { name: "Coberturas", href: "#servicios" },
+    { name: "Reseñas", href: "#resenas" },
     { name: "Nosotros", href: "#nosotros" },
     { name: "FAQ", href: "#faq" },
     { name: "Contacto", href: "#contacto" },
@@ -37,22 +40,22 @@ export function Navbar() {
             className={cn(
                 "fixed z-50 transition-all duration-500 ease-out",
                 isScrolled
-                    ? "top-6 left-1/2 -translate-x-1/2 w-[98%] md:w-[90%] lg:w-[85%] xl:w-[75%] rounded-full bg-brand-navy/90 backdrop-blur-md py-3 px-8 border border-white/10 shadow-2xl"
-                    : "top-0 left-0 right-0 w-full bg-transparent py-8 px-6"
+                    ? "top-3 sm:top-6 left-1/2 -translate-x-1/2 w-[96%] md:w-[90%] xl:w-[88%] 2xl:w-[75%] rounded-full bg-brand-navy/90 backdrop-blur-md py-2.5 sm:py-3 px-4 sm:px-8 border border-white/10 shadow-2xl"
+                    : "top-0 left-0 right-0 w-full bg-transparent py-5 sm:py-8 px-4 sm:px-6"
             )}
         >
             <div className={cn(
-                "mx-auto flex justify-between items-center transition-all",
+                "mx-auto flex justify-between items-center gap-3 transition-all",
                 isScrolled ? "w-full" : "container"
             )}>
-                <div className="flex items-center gap-3 group cursor-pointer">
+                <a href="#inicio" aria-label="Ir al inicio" className="flex items-center gap-2 sm:gap-3 group min-w-0">
                     <div className={cn(
-                        "relative transition-all flex items-center justify-center",
+                        "relative transition-all flex items-center justify-center shrink-0",
                         "rounded-full bg-white/10 overflow-hidden",
-                        isScrolled ? "w-8 h-8" : "w-14 h-14"
+                        isScrolled ? "w-8 h-8" : "w-11 h-11 sm:w-14 sm:h-14"
                     )}>
                         <Image
-                            src="/logoCoscia.png"
+                            src="/logoCoscia-512.png"
                             alt="Coscia Asesores Logo"
                             fill
                             sizes="56px"
@@ -62,20 +65,20 @@ export function Navbar() {
                     </div>
                     <span className={cn(
                         "font-black tracking-tighter text-white uppercase flex flex-col leading-none transition-all",
-                        isScrolled ? "text-base" : "text-2xl"
+                        isScrolled ? "text-sm sm:text-base" : "text-lg sm:text-2xl"
                     )}>
                         Coscia Asesores <span className="text-brand-cyan text-[8px] tracking-widest font-medium mt-0.5">Productores de Seguros</span>
                     </span>
-                </div>
+                </a>
 
-                {/* Desktop Links */}
-                <div className={cn("hidden lg:flex items-center", isScrolled ? "gap-4" : "gap-8")}>
-                    <div className={cn("flex items-center", isScrolled ? "gap-4 xl:gap-6" : "gap-6")}>
-                        {navLinks.map((link) => (
+                {/* Desktop Links (el logo ya lleva al inicio) */}
+                <div className={cn("hidden xl:flex items-center", isScrolled ? "gap-4" : "gap-6 2xl:gap-8")}>
+                    <div className={cn("flex items-center", isScrolled ? "gap-4 2xl:gap-5" : "gap-5 2xl:gap-6")}>
+                        {navLinks.filter((link) => link.href !== "#inicio").map((link) => (
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-xs font-bold text-brand-silver hover:text-brand-cyan transition-colors uppercase tracking-widest relative group"
+                                className="text-xs font-bold text-brand-silver hover:text-brand-cyan transition-colors uppercase tracking-wider 2xl:tracking-widest relative group whitespace-nowrap"
                             >
                                 {link.name}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-cyan transition-all group-hover:w-full" />
@@ -85,34 +88,34 @@ export function Navbar() {
                     <a
                         href="/siniestros"
                         className={cn(
-                            "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center",
+                            "rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center whitespace-nowrap",
                             isScrolled
-                                ? "bg-red-600 hover:bg-red-700 text-white px-5 py-2 text-xs shadow-red-600/20"
-                                : "bg-red-600 hover:bg-red-700 text-white px-6 py-2.5 text-xs shadow-red-600/30"
+                                ? "bg-red-600 hover:bg-red-700 text-white px-5 py-2 text-sm shadow-red-600/20"
+                                : "bg-red-600 hover:bg-red-700 text-white px-6 py-3 text-sm shadow-red-600/30"
                         )}
                     >
                         Siniestro
                     </a>
-                    <a
-                        href="#contacto"
+                    <TrackedLink
+                        href={QUOTER_URL}
+                        channel="quoter"
+                        location="navbar"
                         className={cn(
-                            "rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20 flex items-center justify-center relative overflow-hidden group",
+                            "rounded-full font-bold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-blue/20 flex items-center justify-center whitespace-nowrap",
                             isScrolled
-                                ? "bg-brand-blue text-white px-6 py-2 text-xs"
-                                : "bg-brand-blue text-white px-8 py-3 text-sm hover:bg-white hover:text-brand-blue"
+                                ? "bg-brand-blue text-white px-6 py-2 text-sm"
+                                : "bg-brand-blue text-white px-7 py-3 text-sm hover:bg-white hover:text-brand-blue"
                         )}
                     >
-                        <span className="relative z-10">{isScrolled ? "Cotizar Gratis" : "Cotización Gratis"}</span>
-                        {/* Shimmer Effect - ONLY ON DESKTOP */}
-                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-white/40 to-transparent hidden md:block btn-shimmer" />
-                    </a>
+                        Cotizar online
+                    </TrackedLink>
                 </div>
 
                 {/* Mobile Actions */}
-                <div className="flex lg:hidden items-center gap-3">
+                <div className="flex xl:hidden items-center gap-2 shrink-0">
                     <a
                         href="/siniestros"
-                        className="bg-red-600 text-white px-4 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-red-600/20 active:scale-95 transition-transform"
+                        className="bg-red-600 text-white px-4 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-red-600/20 active:scale-95 transition-transform"
                     >
                         Siniestro
                     </a>
@@ -132,7 +135,7 @@ export function Navbar() {
                         initial={{ opacity: 0, scale: 0.95, y: -20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: -20 }}
-                        className="lg:hidden absolute top-[calc(100%+16px)] left-0 right-0 bg-brand-navy/95 backdrop-blur-3xl p-6 border border-white/10 rounded-3xl shadow-2xl mx-auto w-full max-w-sm max-h-[85vh] overflow-y-auto"
+                        className="xl:hidden absolute top-[calc(100%+16px)] left-0 right-0 bg-brand-navy/95 backdrop-blur-3xl p-6 border border-white/10 rounded-3xl shadow-2xl mx-auto w-full max-w-sm max-h-[85vh] overflow-y-auto"
                     >
                         <div className="flex flex-col gap-6 text-center">
                             {navLinks.map((link) => (
@@ -148,17 +151,19 @@ export function Navbar() {
                             <a
                                 href="/siniestros"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="bg-red-600 hover:bg-red-700 text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest mt-4 shadow-xl block transition-colors"
+                                className="bg-red-600 hover:bg-red-700 text-white py-4 rounded-2xl font-bold text-base mt-4 shadow-xl block transition-colors"
                             >
                                 Reportar Siniestro
                             </a>
-                            <a
-                                href="#contacto"
+                            <TrackedLink
+                                href={QUOTER_URL}
+                                channel="quoter"
+                                location="navbar"
                                 onClick={() => setMobileMenuOpen(false)}
-                                className="bg-brand-blue text-white py-4 rounded-2xl font-black text-sm uppercase tracking-widest shadow-xl block"
+                                className="bg-brand-blue text-white py-4 rounded-2xl font-bold text-base shadow-xl block"
                             >
-                                Cotización Gratis
-                            </a>
+                                Cotizar online
+                            </TrackedLink>
                         </div>
                     </motion.div>
                 )}

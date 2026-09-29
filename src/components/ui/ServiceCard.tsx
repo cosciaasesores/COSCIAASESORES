@@ -61,7 +61,7 @@ export function ServiceCard({
             className="group relative h-full bg-white rounded-3xl hover:-translate-y-2 transition-all duration-300 flex flex-col shadow-md hover:shadow-2xl border border-slate-200 overflow-hidden"
         >
             {/* Top Section: Image */}
-            <div className="relative h-48 w-full overflow-hidden">
+            <div className="relative h-48 w-full overflow-hidden hidden md:block">
                 {image ? (
                     <Image
                         src={image}
@@ -79,33 +79,35 @@ export function ServiceCard({
             </div>
 
             {/* Content Section */}
-            <div className="relative p-8 pt-10 flex flex-col flex-1">
-                {/* Floating Icon */}
-                <div className={cn(
-                    "absolute -top-8 left-8 w-16 h-16 flex items-center justify-center rounded-2xl bg-white shadow-xl border border-slate-50 transition-colors group-hover:bg-brand-blue group-hover:border-brand-blue z-10",
-                )}>
-                    <Icon className="w-8 h-8 text-brand-blue group-hover:text-white transition-colors" />
-                </div>
-
+            <div className="relative p-6 md:p-8 md:pt-10 flex flex-col flex-1">
                 <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-4 text-brand-navy leading-tight">
-                        {title}
-                    </h3>
+                    {/* Mobile: icon next to title. Desktop: floating icon over the image */}
+                    <div className="flex items-center gap-4 md:block mb-3 md:mb-4">
+                        <div className={cn(
+                            "w-12 h-12 md:w-16 md:h-16 shrink-0 md:absolute md:-top-8 md:left-8 flex items-center justify-center rounded-2xl bg-white shadow-md md:shadow-xl border border-slate-100 transition-colors group-hover:bg-brand-blue group-hover:border-brand-blue z-10",
+                        )}>
+                            <Icon className="w-6 h-6 md:w-8 md:h-8 text-brand-blue group-hover:text-white transition-colors" />
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold text-brand-navy leading-tight">
+                            {title}
+                        </h3>
+                    </div>
 
-                    <p className="text-brand-slate leading-relaxed font-normal">
+                    <p className="text-brand-body leading-relaxed font-normal">
                         {description}
                     </p>
                 </div>
 
-                <div
+                <button
+                    type="button"
                     onClick={handleConsultClick}
-                    className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between group/link cursor-pointer"
+                    className="mt-5 pt-4 md:mt-8 md:pt-6 border-t border-slate-100 flex items-center justify-between group/link cursor-pointer text-left"
                 >
-                    <span className="text-sm font-bold uppercase tracking-widest text-brand-blue group-hover:translate-x-1 transition-transform">
+                    <span className="font-bold text-brand-blue group-hover:translate-x-1 transition-transform">
                         Consultar
                     </span>
                     <ChevronRight className="w-5 h-5 text-brand-blue group-hover/link:translate-x-1 transition-transform" />
-                </div>
+                </button>
             </div>
         </motion.div>
     );

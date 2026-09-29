@@ -8,7 +8,7 @@ export function HowItWorks() {
         {
             icon: MessageSquareText,
             title: "Cotizá",
-            desc: "Comentanos qué necesitas proteger. Comunicate con nosotros por WhatsApp o envía tu consulta por form y nos contactamos con vos.",
+            desc: "Comentanos qué necesitás proteger. Cotizá online con nuestro cotizador, escribinos por WhatsApp o envianos tu consulta por el formulario y nos contactamos con vos.",
         },
         {
             icon: FileCheck,
@@ -23,10 +23,7 @@ export function HowItWorks() {
     ];
 
     return (
-        <section id="proceso" className="py-24 bg-slate-50 border-t border-slate-100 relative overflow-hidden font-sans">
-            {/* Ambient Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-brand-blue/5 blur-[120px] rounded-full pointer-events-none hidden md:block" />
-
+        <section id="proceso" className="py-16 md:py-24 bg-blue-50/60 border-y border-blue-100/60 relative overflow-hidden font-sans">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                     <span className="text-brand-blue font-bold uppercase tracking-widest text-xs mb-4 block">
@@ -52,13 +49,11 @@ export function HowItWorks() {
                         >
                             <div className="relative mb-8 group-hover:scale-110 transition-transform duration-300">
                                 <div className="w-24 h-24 rounded-3xl bg-white border border-slate-100 flex items-center justify-center shadow-sm relative overflow-hidden group-hover:shadow-xl transition-shadow">
-                                    {/* Icon Glow */}
-                                    <div className="absolute inset-0 bg-brand-blue/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                     <step.icon className="w-10 h-10 text-brand-blue relative z-10" />
                                 </div>
 
                                 {/* Step Number Badge */}
-                                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-sm ring-4 ring-slate-50 z-20">
+                                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-brand-blue text-white font-bold flex items-center justify-center text-sm ring-4 ring-blue-50 z-20">
                                     {index + 1}
                                 </div>
                             </div>
@@ -66,7 +61,7 @@ export function HowItWorks() {
                             <h3 className="text-xl font-bold text-brand-navy mb-4">
                                 {step.title}
                             </h3>
-                            <p className="text-brand-slate leading-relaxed max-w-xs">
+                            <p className="text-brand-body leading-relaxed max-w-xs">
                                 {step.desc}
                             </p>
                         </motion.div>

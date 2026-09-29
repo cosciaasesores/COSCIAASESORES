@@ -1,64 +1,53 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { ShieldCheck, Headset } from "lucide-react";
+import { ShieldCheck, Headset, Users } from "lucide-react";
 
-export function About() {
-    const images = [
-        "https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?q=80&w=1200&auto=format&fit=crop", // Familia
-        "https://images.unsplash.com/photo-1532581291347-9c39cf10a73c?q=80&w=1200&auto=format&fit=crop", // Auto (SUV genérico profesional)
-        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200&auto=format&fit=crop"  // Hogar (Casa moderna profesional)
+interface OwnerPhotos {
+    gustavo?: string;
+    nahuel?: string;
+}
+
+export function About({ ownerPhotos = {} }: { ownerPhotos?: OwnerPhotos }) {
+    const owners = [
+        {
+            name: "Coscia Gustavo Juan",
+            role: "PAS Matrícula 52.032",
+            initials: "GC",
+            photo: ownerPhotos.gustavo,
+        },
+        {
+            name: "Dr. Coscia Fernandez Nahuel Ignacio",
+            role: "PAS Matrícula 93.900",
+            initials: "NC",
+            photo: ownerPhotos.nahuel,
+        },
     ];
 
-    const [index, setIndex] = useState(0);
-    const [isMobile, setIsMobile] = useState(false); // Added for checkMobile
-
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth < 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-
-        // Carousel auto-play only on desktop
-        let timer: NodeJS.Timeout;
-        if (window.innerWidth >= 768) {
-            timer = setInterval(() => {
-                setIndex((prev: number) => (prev + 1) % images.length);
-            }, 5000);
-        }
-        return () => {
-            if (timer) clearInterval(timer);
-            window.removeEventListener('resize', checkMobile);
-        };
-    }, [images.length]);
-
     return (
-        <section className="py-24 bg-slate-50 relative overflow-hidden font-sans">
-            {/* Background Elements */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-blue/3 skew-x-12 hidden md:block pointer-events-none" />
-
-            <div className="container mx-auto px-6 relative z-10 text-brand-navy">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+        <section id="nosotros" className="py-16 md:py-24 bg-slate-100/60 relative overflow-hidden font-sans scroll-mt-24">
+            <div className="container mx-auto px-6 lg:px-12 relative z-10 text-brand-navy">
+                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
 
                     <div className="lg:w-1/2">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 text-brand-blue/80 font-bold uppercase tracking-widest text-xs mb-6"
+                            className="inline-flex items-center gap-2 text-brand-blue font-bold uppercase tracking-widest text-xs mb-6"
                         >
                             <span className="w-8 h-px bg-brand-blue/50" />
-                            Nuestra Esencia
+                            Quiénes Somos
                         </motion.div>
 
                         <motion.h2
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="text-4xl md:text-5xl font-display font-bold mb-8 leading-tight"
+                            className="text-3xl md:text-5xl font-display font-bold mb-8 leading-tight"
                         >
-                            Mas que seguros, <br />
+                            Más que seguros, <br />
                             <span className="text-brand-blue">somos tu aliado estratégico.</span>
                         </motion.h2>
 
@@ -67,7 +56,7 @@ export function About() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-slate-600 text-lg leading-relaxed space-y-6"
+                            className="text-brand-body text-lg leading-relaxed space-y-6"
                         >
                             <p>
                                 En <strong>Coscia Asesores Productores de Seguros</strong>, entendemos que detrás de cada bien a cubrir hay un proyecto de vida, una empresa familiar o el sueño de una casa propia. No vendemos &quot;papeles&quot;, vendemos la certeza de que, pase lo que pase, vas a poder seguir adelante.
@@ -77,71 +66,77 @@ export function About() {
                             </p>
                         </motion.div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 border-t border-slate-200 pt-8 items-center">
+                        <div className="grid grid-cols-3 gap-4 md:gap-8 mt-10 border-t border-slate-200 pt-8 items-center">
                             <div className="text-center flex flex-col items-center">
-                                <ShieldCheck className="w-8 h-8 text-brand-blue/40 mb-2" />
-                                <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Respaldo Total</div>
+                                <ShieldCheck className="w-8 h-8 text-brand-blue/60 mb-2" />
+                                <div className="text-xs md:text-sm text-slate-600 uppercase tracking-wider font-semibold">Respaldo Total</div>
                             </div>
                             <div className="text-center">
-                                <div className="text-4xl font-bold mb-1 text-brand-navy">+25</div>
-                                <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Años de Trayectoria</div>
+                                <div className="text-3xl md:text-4xl font-bold mb-1 text-brand-navy">+25</div>
+                                <div className="text-xs md:text-sm text-slate-600 uppercase tracking-wider font-semibold">Años de Trayectoria</div>
                             </div>
                             <div className="text-center flex flex-col items-center">
-                                <Headset className="w-8 h-8 text-brand-blue/40 mb-2" />
-                                <div className="text-sm text-slate-500 uppercase tracking-wider font-semibold">Asesoría 24/7</div>
+                                <Headset className="w-8 h-8 text-brand-blue/60 mb-2" />
+                                <div className="text-xs md:text-sm text-slate-600 uppercase tracking-wider font-semibold">Asesoría 24/7</div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:w-1/2 w-full relative hidden lg:block">
-                        {/* Dynamic Image Carousel */}
-                        <div className="aspect-square md:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden bg-brand-navy shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] relative group border border-white/10">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, scale: 1.1 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 1, ease: "easeInOut" }}
-                                    className="absolute inset-0"
-                                >
-                                    <Image
-                                        src={images[index]}
-                                        alt="Vida y protección"
-                                        fill
-                                        className="object-cover opacity-80"
-                                    />
-                                    <div className="absolute inset-0 bg-linear-to-t from-brand-navy/60 via-transparent to-transparent" />
-                                </motion.div>
-                            </AnimatePresence>
+                    {/* Owners */}
+                    <div className="lg:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {owners.map((member, index) => (
+                            <motion.div
+                                key={member.initials}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="bg-white border border-slate-200 rounded-3xl p-8 flex flex-col items-center text-center shadow-sm"
+                            >
+                                <div className="w-40 h-40 rounded-full p-1 bg-linear-to-br from-brand-blue to-brand-cyan mb-6 shadow-lg">
+                                    {member.photo ? (
+                                        <div className="relative w-full h-full rounded-full overflow-hidden bg-white">
+                                            <Image
+                                                src={member.photo}
+                                                alt={member.name}
+                                                fill
+                                                sizes="160px"
+                                                className="object-cover object-[center_25%]"
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className="w-full h-full rounded-full flex items-center justify-center text-4xl font-bold text-white">
+                                            {member.initials}
+                                        </div>
+                                    )}
+                                </div>
 
-                            <div className="absolute inset-0 flex items-center justify-center p-6 md:p-12">
-                                <motion.div
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    className="p-8 backdrop-blur-xl bg-white/10 border border-white/20 rounded-4xl max-w-sm text-center shadow-2xl z-20"
-                                >
-                                    <div className="text-white font-bold text-2xl mb-2">Visión 360°</div>
-                                    <p className="text-white/80 text-base">
-                                        Analizamos todos los riesgos, incluso los que no se ven, para que vivas con total libertad.
-                                    </p>
-                                </motion.div>
-                            </div>
-
-                            {/* Carousel Indicators */}
-                            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-30">
-                                {images.map((_, i) => (
-                                    <button
-                                        key={i}
-                                        onClick={() => setIndex(i)}
-                                        className={`w-3 h-3 rounded-full transition-all duration-500 ${i === index ? "bg-white w-8" : "bg-white/40"}`}
-                                    />
-                                ))}
-                            </div>
-                        </div>
+                                <h3 className="text-xl font-bold text-brand-navy mb-1">{member.name}</h3>
+                                <div className="text-brand-blue text-sm font-bold uppercase tracking-wider">{member.role}</div>
+                            </motion.div>
+                        ))}
                     </div>
-
                 </div>
+
+                {/* Commercial Team Note */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mt-12 md:mt-16 p-8 md:p-10 rounded-3xl bg-brand-navy text-white relative overflow-hidden border border-white/10"
+                >
+                    <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                        <div className="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
+                            <Users className="w-8 h-8 text-brand-cyan" />
+                        </div>
+                        <div className="text-center md:text-left">
+                            <h3 className="text-xl font-bold mb-2">Nuestro Equipo Comercial y Administrativo</h3>
+                            <p className="text-brand-silver/80 leading-relaxed">
+                                Contamos con un equipo de profesionales especializados en atención al cliente, gestión de siniestros y administración, comprometidos día a día para brindarte el respaldo y la rapidez que merecés.
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

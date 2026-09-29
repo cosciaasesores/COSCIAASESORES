@@ -10,6 +10,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  // Solo desarrollo: permite probar desde el celular usando la IP de la PC en la red local.
+  allowedDevOrigins: ['192.168.0.126', '10.200.9.69'],
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 3600,
