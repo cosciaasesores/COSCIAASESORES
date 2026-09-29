@@ -1,6 +1,9 @@
 import { ImageResponse } from 'next/og';
+import { join } from 'node:path';
+import { readFile } from 'node:fs/promises';
 
-export const runtime = 'edge';
+const logoData = await readFile(join(process.cwd(), 'public/logo-oficial.png'), 'base64');
+const logoSrc = `data:image/png;base64,${logoData}`;
 
 export const alt = 'Coscia Asesores - Protección Inteligente';
 export const size = {
@@ -55,8 +58,10 @@ export default async function Image() {
                 />
 
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', zIndex: 10 }}>
-                    {/* Logo Text Emulation */}
-                    <div style={{ fontSize: 80, fontWeight: 'bold', color: 'white', marginBottom: 20 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={logoSrc} width={220} height={220} alt="" style={{ marginBottom: 28 }} />
+
+                    <div style={{ fontSize: 72, fontWeight: 'bold', color: 'white', marginBottom: 16 }}>
                         Coscia Asesores
                     </div>
 
@@ -64,7 +69,7 @@ export default async function Image() {
                         Protección Inteligente para tu Futuro
                     </div>
 
-                    <div style={{ marginTop: 40, padding: '10px 30px', background: '#3b82f6', borderRadius: 20, color: 'white', fontSize: 24 }}>
+                    <div style={{ marginTop: 32, padding: '10px 30px', background: '#3b82f6', borderRadius: 20, color: 'white', fontSize: 24 }}>
                         Cotizá Online
                     </div>
                 </div>

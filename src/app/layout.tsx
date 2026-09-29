@@ -19,24 +19,13 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  icons: {
-    icon: "/logo-coscia.png",
-    shortcut: "/logo-coscia.png",
-    apple: "/logo-coscia.png",
-  },
+  // favicon.ico, icon.png, apple-icon.png, opengraph-image y twitter-image
+  // se toman de los archivos en src/app (convenciones de Next).
   openGraph: {
     title: "Coscia Asesores | Seguros - Cotización Gratis",
     description: "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
     url: "https://www.cosciaasesores.com",
     siteName: "Coscia Asesores",
-    images: [
-      {
-        url: "/logoCoscia-512.png",
-        width: 512,
-        height: 481,
-        alt: "Coscia Asesores Banner",
-      },
-    ],
     locale: "es_AR",
     type: "website",
   },

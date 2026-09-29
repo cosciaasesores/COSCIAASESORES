@@ -8,6 +8,8 @@ export function StructuredData() {
         "name": "Coscia Asesores de Seguros",
         "description": "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
         "url": "https://www.cosciaasesores.com",
+        "logo": "https://www.cosciaasesores.com/logo-oficial.png",
+        "image": "https://www.cosciaasesores.com/logo-oficial.png",
         "telephone": "+54 11 5827-6780",
         "email": EMAIL,
         "address": {

@@ -55,7 +55,7 @@ export function Navbar() {
                         isScrolled ? "w-8 h-8" : "w-11 h-11 sm:w-14 sm:h-14"
                     )}>
                         <Image
-                            src="/logoCoscia-512.png"
+                            src="/logo-oficial.png"
                             alt="Coscia Asesores Logo"
                             fill
                             sizes="56px"

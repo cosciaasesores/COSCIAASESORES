@@ -24,7 +24,7 @@ export const GOOGLE_REVIEWS_COUNT = "+100";
 
 export const SOCIAL = {
     instagram: "https://www.instagram.com/cosciaasesores",
-    facebook: "https://www.facebook.com/cosciaasesores",
+    facebook: "https://www.facebook.com/profile.php?id=61595099123319",
 };
 
 export const ADS_ID = "AW-18123731177";

@@ -33,9 +33,10 @@ export default function SiniestrosPage() {
                         <div className={`relative rounded-full bg-white/10 overflow-hidden transition-all ${isScrolled ? "w-10 h-10" : "w-12 h-12"
                             }`}>
                             <Image
-                                src="/logoCoscia.png"
+                                src="/logo-oficial.png"
                                 alt="Coscia Asesores Logo"
                                 fill
+                                sizes="48px"
                                 className="object-cover"
                                 priority
                             />
