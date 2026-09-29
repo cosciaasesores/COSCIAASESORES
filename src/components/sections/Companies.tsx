@@ -1,20 +1,53 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
-import { insurers } from "@/data/insurers";
+import { insurers, type Insurer } from "@/data/insurers";
 import { Marquee } from "@/components/ui/Marquee";
 
+// Todos los logos ocupan la misma superficie (px² en desktop): los anchos quedan más bajos
+// y los cuadrados más altos, así se perciben del mismo tamaño. En mobile se usa el 80%.
+const LOGO_AREA = 6800;
+const MAX_HEIGHT = 64;
+const MAX_WIDTH = 180;
+const MOBILE_FACTOR = 0.8;
+
+function logoBox({ width, height }: Insurer, scale = 1) {
+    const ratio = width / height;
+    let h = Math.sqrt(LOGO_AREA / ratio);
+    let w = h * ratio;
+    if (h > MAX_HEIGHT) {
+        h = MAX_HEIGHT;
+        w = h * ratio;
+    }
+    if (w > MAX_WIDTH) {
+        w = MAX_WIDTH;
+        h = w / ratio;
+    }
+    // El ajuste fino va después de los topes para que también afecte a los logos que los tocan.
+    return { w: w * scale, h: h * scale };
+}
+
 export function Companies() {
-    const logos = insurers.map((insurer) => (
-        <div key={insurer.logo} className="relative w-28 h-10 md:w-36 md:h-12">
-            <Image
-                src={insurer.logo}
-                alt={insurer.name}
-                fill
-                sizes="144px"
-                className="object-contain"
-                style={insurer.scale ? { transform: `scale(${insurer.scale})` } : undefined}
-            />
-        </div>
-    ));
+    const logos = insurers.map((insurer) => {
+        const mobile = logoBox(insurer, (insurer.scale ?? 1) * MOBILE_FACTOR);
+        const desktop = logoBox(insurer, insurer.desktopScale ?? insurer.scale ?? 1);
+        const px = (n: number) => `${Math.round(n)}px`;
+        return (
+            <div key={insurer.logo} className="flex h-full items-center">
+                <div
+                    className="relative w-(--mw) h-(--mh) md:w-(--w) md:h-(--h)"
+                    style={{ "--mw": px(mobile.w), "--mh": px(mobile.h), "--w": px(desktop.w), "--h": px(desktop.h) } as CSSProperties}
+                >
+                    <Image
+                        src={insurer.logo}
+                        alt={insurer.name}
+                        fill
+                        sizes={px(desktop.w)}
+                        className="object-contain"
+                    />
+                </div>
+            </div>
+        );
+    });
 
     return (
         <section id="socios" className="py-12 md:py-16 bg-white border-y border-slate-100 font-sans scroll-mt-24">
