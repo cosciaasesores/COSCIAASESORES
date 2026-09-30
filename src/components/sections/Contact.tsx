@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import {
     ADDRESS,
     EMAIL,
+    MAPS_EMBED_URL,
     MAPS_URL,
     QUOTER_URL,
     SOCIAL,
@@ -93,17 +94,16 @@ export function Contact() {
                                     </div>
                                 </a>
                                 {/* Modern Google Maps Embed */}
-                                <div className="mt-8 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative h-48 w-full group/map">
+                                <div className="mt-8 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative h-80 w-full">
                                     <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d-58.5875769!3d-34.608143!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb84533b579c9%3A0x29187b2f684bcd68!2sCoscia%20Asesores%20-%20Productores%20de%20Seguro!5e0!3m2!1ses-419!2sar!4v1714400000000!5m2!1ses-419!2sar"
+                                        src={MAPS_EMBED_URL}
                                         width="100%"
                                         height="100%"
-                                        style={{ border: 0, filter: 'grayscale(0.6) invert(0.9) contrast(1.2)' }}
+                                        style={{ border: 0 }}
                                         allowFullScreen
                                         loading="lazy"
                                         referrerPolicy="no-referrer-when-downgrade"
                                         title="Ubicación de Coscia Asesores"
-                                        className="opacity-80 group-hover/map:opacity-100 transition-opacity duration-500"
                                     ></iframe>
                                     <div className="absolute inset-0 pointer-events-none ring-1 ring-inset ring-white/10 rounded-2xl"></div>
                                 </div>

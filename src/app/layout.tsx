@@ -8,7 +8,7 @@ import { ClientLayout } from "@/components/layout/ClientLayout";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.cosciaasesores.com'),
-  title: "Coscia Asesores | Seguros - Cotización Gratis",
+  title: "Seguros en El Palomar | Coscia Asesores",
   description: "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
   keywords: ["seguros el palomar", "asesor de seguros", "seguro automotor", "seguro de vida", "ART", "seguros Buenos Aires", "cotización gratis", "broker seguros"],
   authors: [{ name: "Coscia Asesores" }],
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   // favicon.ico, icon.png, apple-icon.png, opengraph-image y twitter-image
   // se toman de los archivos en src/app (convenciones de Next).
   openGraph: {
-    title: "Coscia Asesores | Seguros - Cotización Gratis",
+    title: "Seguros en El Palomar | Coscia Asesores",
     description: "Cotiza gratis tus seguros. +10 compañías líderes. Atención personalizada 24/7",
     url: "https://www.cosciaasesores.com",
     siteName: "Coscia Asesores",
