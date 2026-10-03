@@ -28,6 +28,30 @@ export function Contact() {
         return () => window.removeEventListener('resize', checkDesktop);
     }, []);
 
+    // Llegando con #contacto (ej. "Dejanos tus datos" desde /coberturas/[slug]) esta sección
+    // y las de arriba cargan diferidas, así que el scroll al hash de Next queda corto.
+    // Re-scrolleamos mientras la página crece, hasta que el usuario interactúe o pasen 2s.
+    useEffect(() => {
+        if (window.location.hash !== '#contacto') return;
+        const section = document.getElementById('contacto');
+        if (!section) return;
+
+        const scrollToSection = () => section.scrollIntoView({ block: 'start' });
+        const observer = new ResizeObserver(scrollToSection);
+        const userEvents = ['wheel', 'touchstart', 'keydown', 'mousedown'] as const;
+        const timeout = setTimeout(() => stop(), 2000);
+        function stop() {
+            observer.disconnect();
+            clearTimeout(timeout);
+            userEvents.forEach((e) => window.removeEventListener(e, stop));
+        }
+
+        userEvents.forEach((e) => window.addEventListener(e, stop, { passive: true }));
+        observer.observe(document.body);
+        scrollToSection();
+        return stop;
+    }, []);
+
     return (
         <section id="contacto" className="py-16 md:py-24 bg-brand-navy relative dark-section font-sans scroll-mt-24">
             {/* Background Mesh - HIDDEN ON MOBILE FOR PERFORMANCE */}
@@ -52,11 +76,11 @@ export function Contact() {
 
                         <h2 className="text-3xl md:text-5xl font-display font-bold mb-8 tracking-tight leading-snug text-white pb-1">
                             Hablemos de tu <br />
-                            <span className="text-brand-blue">Tranquilidad.</span>
+                            <span className="text-brand-blue">Seguro.</span>
                         </h2>
 
                         <p className="text-brand-silver/80 text-xl mb-12 max-w-sm leading-relaxed font-light">
-                            Sin compromisos. Analizamos tu situación actual y te proponemos la mejor estrategia.
+                            Contanos qué necesitás y te ayudamos a encontrar una cobertura acorde a vos, comparando alternativas y acompañándote en todo el proceso.
                         </p>
 
                         <div className="space-y-12 border-l-2 border-white/10 pl-8">

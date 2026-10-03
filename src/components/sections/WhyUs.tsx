@@ -2,29 +2,29 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Award, Zap, Users, ShieldCheck } from "lucide-react";
+import { MessagesSquare, Scale, HeartHandshake, Users } from "lucide-react";
 
 export function WhyUs() {
     const reasons = [
         {
-            icon: Award,
-            title: "Asesoramiento Certificado",
-            desc: "Décadas de trayectoria asesorando a familias y empresas con los más altos estándares éticos.",
+            icon: MessagesSquare,
+            title: "Hablás directamente con tu asesor",
+            desc: "Te ayudamos a entender qué estás contratando y cuáles son los alcances de tu cobertura.",
         },
         {
-            icon: Zap,
-            title: "Respuesta Inmediata",
-            desc: "Gestión ágil pro-cliente. Ante un siniestro, somos tu mayor aliado, no sos un número más.",
+            icon: Scale,
+            title: "Comparamos distintas compañías",
+            desc: "Evaluamos alternativas teniendo en cuenta las coberturas, las condiciones de contratación y el precio.",
+        },
+        {
+            icon: HeartHandshake,
+            title: "Te acompañamos ante un siniestro",
+            desc: "Te orientamos sobre la documentación necesaria y te ayudamos con el seguimiento de la gestión ante tu compañía.",
         },
         {
             icon: Users,
-            title: "Atención Exclusiva",
-            desc: "Personalizamos cada póliza buscando el equilibrio perfecto entre máxima cobertura y costo.",
-        },
-        {
-            icon: ShieldCheck,
-            title: "Solvencia Garantizada",
-            desc: "Operamos con las compañías líderes del país, brindándote la solidez de los mejores del mercado.",
+            title: "Más de 25 años de trayectoria",
+            desc: "Experiencia y atención personalizada para particulares, profesionales y empresas.",
         },
     ];
 
@@ -50,54 +50,42 @@ export function WhyUs() {
     return (
         <section id="por-que-elegirnos" className="py-16 md:py-24 bg-white relative scroll-mt-24">
             <div className="container mx-auto px-6 lg:px-12 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+                <div className="max-w-3xl mb-10 md:mb-14">
+                    <motion.div
+                        {...animateX}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 text-brand-blue font-bold uppercase tracking-widest text-xs mb-6"
+                    >
+                        <span className="w-8 h-px bg-brand-blue" />
+                        Por qué elegirnos
+                    </motion.div>
 
-                    <div className="lg:w-1/3 relative">
+                    <motion.h2
+                        {...animateY(0.1)}
+                        viewport={{ once: true }}
+                        className="text-3xl md:text-5xl font-display font-bold text-brand-navy leading-tight pb-1"
+                    >
+                        Asesoramiento y acompañamiento <span className="text-brand-blue">personalizado.</span>
+                    </motion.h2>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+                    {reasons.map((reason, index) => (
                         <motion.div
-                            {...animateX}
+                            key={index}
+                            {...animateY(index * 0.1 + 0.2)}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 text-brand-blue font-bold uppercase tracking-widest text-xs mb-6"
+                            className="group p-6 md:p-7 rounded-3xl bg-slate-50 border border-slate-200 transition-all duration-300 hover:shadow-xl hover:bg-white"
                         >
-                            <span className="w-8 h-px bg-brand-blue" />
-                            Por qué elegirnos
+                            <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                                <reason.icon className="w-6 h-6 text-brand-blue" />
+                            </div>
+                            <h3 className="text-lg md:text-xl font-bold text-brand-navy leading-snug mb-3">{reason.title}</h3>
+                            <p className="text-brand-body text-[15px] leading-relaxed">
+                                {reason.desc}
+                            </p>
                         </motion.div>
-
-                        <motion.h2
-                            {...animateY(0.1)}
-                            viewport={{ once: true }}
-                            className="text-3xl md:text-5xl font-display font-bold text-brand-navy mb-8 leading-snug pb-1"
-                        >
-                            Respaldo <br /><span className="text-brand-blue">Absoluto.</span>
-                        </motion.h2>
-
-                        <motion.p
-                            {...animateY(0.2)}
-                            viewport={{ once: true }}
-                            className="text-xl text-brand-body leading-relaxed font-normal"
-                        >
-                            En un mercado complejo, la claridad es nuestro mayor activo. Analizamos cada riesgo para ofrecerte soluciones que realmente funcionan cuando las necesitás.
-                        </motion.p>
-                    </div>
-
-                    <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        {reasons.map((reason, index) => (
-                            <motion.div
-                                key={index}
-                                {...animateY(index * 0.1 + 0.3)}
-                                viewport={{ once: true }}
-                                className="group p-8 rounded-3xl bg-slate-50 border border-slate-200 transition-all duration-300 hover:shadow-xl hover:bg-white"
-                            >
-                                <div className="w-14 h-14 rounded-2xl bg-brand-blue/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                                    <reason.icon className="w-7 h-7 text-brand-blue" />
-                                </div>
-                                <h3 className="text-2xl font-bold text-brand-navy mb-4">{reason.title}</h3>
-                                <p className="text-brand-body leading-relaxed">
-                                    {reason.desc}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </div>
-
+                    ))}
                 </div>
             </div>
         </section>

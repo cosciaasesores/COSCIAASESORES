@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises';
 const logoData = await readFile(join(process.cwd(), 'public/logo-oficial.png'), 'base64');
 const logoSrc = `data:image/png;base64,${logoData}`;
 
-export const alt = 'Coscia Asesores - Protección Inteligente';
+export const alt = 'Coscia Asesores - Tu seguro, con el respaldo de un asesor de verdad';
 export const size = {
     width: 1200,
     height: 630,
@@ -66,7 +66,7 @@ export default async function Image() {
                     </div>
 
                     <div style={{ fontSize: 32, color: '#94a3b8', textAlign: 'center', maxWidth: '800px' }}>
-                        Protección Inteligente para tu Futuro
+                        Tu seguro, con el respaldo de un asesor de verdad.
                     </div>
 
                     <div style={{ marginTop: 32, padding: '10px 30px', background: '#3b82f6', borderRadius: 20, color: 'white', fontSize: 24 }}>

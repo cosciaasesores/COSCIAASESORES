@@ -20,9 +20,9 @@ export default function Home() {
       <Companies />
       <Services />
       <HowItWorks />
-      <Testimonials />
       <WhyUs />
       <About ownerPhotos={{ gustavo: photos.gustavo, nahuel: photos.nahuel }} />
+      <Testimonials />
       <FAQ />
       <Contact />
     </main>

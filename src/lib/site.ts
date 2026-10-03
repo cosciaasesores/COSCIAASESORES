@@ -25,6 +25,8 @@ export const BUSINESS_HOURS = "Lunes a viernes de 09:00 a 17:00 hs";
 export const GOOGLE_REVIEWS_URL = MAPS_URL;
 // Cantidad de reseñas en Google (dato del cliente). Actualizar cuando crezca.
 export const GOOGLE_REVIEWS_COUNT = "+100";
+// Cantidad de clientes (dato del cliente). Actualizar cuando crezca.
+export const CLIENTS_COUNT = "+2.000";
 
 export const SOCIAL = {
     instagram: "https://www.instagram.com/cosciaasesores",

@@ -6,8 +6,8 @@ import { TrackedLink } from "@/components/ui/TrackedLink";
 const footerLinks = [
     { name: "Compañías", href: "/#socios" },
     { name: "Coberturas", href: "/#servicios" },
-    { name: "Reseñas", href: "/#resenas" },
     { name: "Nosotros", href: "/#nosotros" },
+    { name: "Reseñas", href: "/#resenas" },
     { name: "Preguntas frecuentes", href: "/#faq" },
     { name: "Reportar siniestro", href: "/siniestros" },
 ];

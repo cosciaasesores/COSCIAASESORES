@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle, ShieldCheck, Award } from "lucide-react";
+import { ArrowRight, MessageCircle, ShieldCheck, Award, Users } from "lucide-react";
 import Image from "next/image";
-import { GOOGLE_REVIEWS_COUNT, QUOTER_URL, WHATSAPP_QUOTE_TEXT, whatsappUrl } from "@/lib/site";
+import { CLIENTS_COUNT, GOOGLE_REVIEWS_COUNT, QUOTER_URL, WHATSAPP_QUOTE_TEXT, whatsappUrl } from "@/lib/site";
 import { TrackedLink } from "@/components/ui/TrackedLink";
 
 const DEFAULT_HERO_IMAGE = "https://images.unsplash.com/photo-1511895426328-dc8714191300";
@@ -12,7 +12,7 @@ export function Hero({ heroImage }: { heroImage?: string }) {
     const imageSrc = heroImage ?? DEFAULT_HERO_IMAGE;
 
     return (
-        <section id="inicio" className="relative lg:min-h-screen flex items-center bg-brand-navy pt-32 pb-16 lg:py-20 overflow-hidden font-sans dark-section">
+        <section id="inicio" className="relative lg:min-h-screen flex items-center bg-brand-navy pt-32 pb-16 lg:pt-28 lg:pb-16 overflow-hidden font-sans dark-section">
             {/* Ambient Background Elements */}
             <div className="absolute inset-0 pointer-events-none hidden lg:block">
                 <div className="absolute top-0 right-0 w-200 h-200 bg-brand-cyan/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2 opacity-50" />
@@ -23,16 +23,16 @@ export function Hero({ heroImage }: { heroImage?: string }) {
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
 
                     {/* Left Side: Content */}
-                    <div className="w-full lg:w-1/2 text-left space-y-8 lg:pr-8">
+                    <div className="w-full lg:w-1/2 text-left space-y-8 lg:space-y-6 lg:pr-8">
                         <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, ease: "easeOut" }}
-                            className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-none tracking-tight"
+                            className="text-4xl md:text-5xl xl:text-[3.5rem] font-display font-bold text-white leading-[1.15]"
                         >
-                            Tu Futuro <br />
+                            Tu seguro, <br />
                             <span className="text-brand-cyan">
-                                Asegurado.
+                                con el respaldo de un asesor de verdad.
                             </span>
                         </motion.h1>
 
@@ -40,9 +40,9 @@ export function Hero({ heroImage }: { heroImage?: string }) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                            className="text-xl md:text-2xl text-brand-silver/80 leading-relaxed max-w-xl font-normal"
+                            className="text-lg md:text-xl text-brand-silver/80 leading-relaxed max-w-xl font-normal"
                         >
-                            Contamos con el respaldo que tanto vos como tu familia y empresa necesitan para vivir con total libertad!
+                            Comparamos coberturas de distintas compañías para ayudarte a encontrar el seguro que necesitás. Te asesoramos al contratar y te acompañamos ante un siniestro.
                         </motion.p>
 
                         <motion.div
@@ -78,13 +78,17 @@ export function Hero({ heroImage }: { heroImage?: string }) {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.8, delay: 0.5 }}
-                            className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-2 text-sm text-brand-silver/80"
+                            className="flex flex-wrap items-center gap-x-5 gap-y-3 pt-2 text-sm text-brand-silver/80"
                         >
                             <li>
                                 <a href="#resenas" className="flex items-center gap-2 hover:text-white transition-colors">
                                     <span className="text-[#FBBC04] tracking-tight" aria-hidden="true">★★★★★</span>
                                     <span><strong className="text-white font-semibold">{GOOGLE_REVIEWS_COUNT}</strong> reseñas en Google</span>
                                 </a>
+                            </li>
+                            <li className="flex items-center gap-2">
+                                <Users className="w-4 h-4 text-brand-cyan" />
+                                <span><strong className="text-white font-semibold">{CLIENTS_COUNT}</strong> clientes</span>
                             </li>
                             <li className="flex items-center gap-2">
                                 <Award className="w-4 h-4 text-brand-cyan" />
