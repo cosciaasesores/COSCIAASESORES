@@ -10,6 +10,8 @@ import { useState, useEffect } from "react";
 export function ClientLayout({ children }: { children: React.ReactNode }) {
     const pathname = usePathname();
     const isSiniestros = pathname === '/siniestros';
+    // Las páginas de cobertura usan SubpageHeader: los anchors del Navbar solo funcionan en la landing.
+    const isCoverage = pathname.startsWith('/coberturas/');
     const [skipAnimations, setSkipAnimations] = useState(false);
 
     useEffect(() => {
@@ -24,7 +26,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
     return (
         <ErrorBoundary>
             <MotionConfig reducedMotion={skipAnimations ? "always" : "user"}>
-                {!isSiniestros && <Navbar />}
+                {!isSiniestros && !isCoverage && <Navbar />}
                 {children}
                 {!isSiniestros && <Footer />}
             </MotionConfig>

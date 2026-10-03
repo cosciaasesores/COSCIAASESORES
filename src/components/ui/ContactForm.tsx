@@ -1,13 +1,25 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, Loader2, CheckCircle2, AlertCircle, ChevronDown } from "lucide-react";
+
+const SERVICE_VALUES = ["accidentes", "art", "automotor", "cauciones", "comercios", "embarcaciones", "hogar", "motovehiculo", "otro"];
+
+// Servicio preseleccionado por ?servicio= (links desde /coberturas/[slug]). En el server no hay query.
+const subscribeToUrl = () => () => {};
+function getQueryService() {
+    const service = new URLSearchParams(window.location.search).get("servicio");
+    return service && SERVICE_VALUES.includes(service) ? service : null;
+}
 
 export function ContactForm() {
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [errorMsg, setErrorMsg] = useState("");
-    const [selectedService, setSelectedService] = useState("");
+    const queryService = useSyncExternalStore(subscribeToUrl, getQueryService, () => null);
+    // null = el usuario todavía no eligió; en ese caso vale el de la URL.
+    const [pickedService, setSelectedService] = useState<string | null>(null);
+    const selectedService = pickedService ?? queryService ?? "";
 
     // Form values
     const [formData, setFormData] = useState({

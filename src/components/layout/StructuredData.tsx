@@ -1,3 +1,4 @@
+import { coverages } from "@/data/coverages";
 import { faqs, faqAnswerText } from "@/data/faq";
 import { EMAIL, SOCIAL } from "@/lib/site";
 
@@ -51,44 +52,20 @@ export function StructuredData() {
     const servicesSchema = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "itemListElement": [
-            {
+        "itemListElement": coverages.map((coverage, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
                 "@type": "Service",
-                "name": "Seguro de Auto",
-                "description": "Cobertura completa para tu vehículo con las mejores aseguradoras",
-                "provider": {
-                    "@type": "InsuranceAgency",
-                    "name": "Coscia Asesores"
-                }
-            },
-            {
-                "@type": "Service",
-                "name": "Seguro de Hogar",
-                "description": "Protección integral para tu casa y pertenencias",
-                "provider": {
-                    "@type": "InsuranceAgency",
-                    "name": "Coscia Asesores"
-                }
-            },
-            {
-                "@type": "Service",
-                "name": "Asistencia Legal",
-                "description": "Asistencia ante reclamos de terceros en compañías colegas por accidentes de tránsito",
-                "provider": {
-                    "@type": "InsuranceAgency",
-                    "name": "Coscia Asesores"
-                }
-            },
-            {
-                "@type": "Service",
-                "name": "ART",
-                "description": "Seguros de riesgos del trabajo para empresas",
+                "name": coverage.metaTitle,
+                "description": coverage.summary,
+                "url": `https://www.cosciaasesores.com/coberturas/${coverage.slug}`,
                 "provider": {
                     "@type": "InsuranceAgency",
                     "name": "Coscia Asesores"
                 }
             }
-        ]
+        }))
     };
 
     // Generado desde la misma fuente que la sección FAQ visible.
